@@ -5,7 +5,7 @@ const {
   getVotes,
   getPlaces,
   postPlace,
-  postVote,
+  // postVote,
   //getCategories,
 } = require('../controllers/entries');
 
@@ -16,7 +16,7 @@ const router = express.Router();
 router.get('/places/listvotes', getVotes);
 router.get('/places/places/:city', getPlaces);
 router.post('/places/newplace', postPlace);
-router.post('/places/newvote', postVote);
+// router.post('/places/newvote', postVote);
 //router.get('/places/votes', getCategories);
 
 module.exports = router;
