@@ -4,7 +4,7 @@ const router = express.Router();
 //importar los controllers
 const {
   postUser,
-  loginUser
+  loginUser,
 } = require('../controllers/users');
 
 //middlewares
