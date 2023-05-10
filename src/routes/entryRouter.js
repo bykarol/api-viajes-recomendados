@@ -4,19 +4,19 @@ const express = require('express');
 const {
   getVotes,
   getPlaces,
+  postPlace,
+  postVote,
   //getCategories,
-  // postEntry,
-  // postVote,
 } = require('../controllers/entries');
 
 const router = express.Router();
 //middlewares
 
 //entries endpoints
-router.get('/entries/votes', getVotes);
-router.get('/entries/places/:city', getPlaces);
-//router.get('/entries/votes', getCategories);
-//router.post('/entries/newEntry', postEntry);
-//router.post('/entries/vote', postVote);
+router.get('/places/listvotes', getVotes);
+router.get('/places/places/:city', getPlaces);
+router.post('/places/newplace', postPlace);
+router.post('/places/newvote', postVote);
+//router.get('/places/votes', getCategories);
 
 module.exports = router;
