@@ -17,7 +17,7 @@ const getDB = async () => {
       timezone: 'Z',
     });
   }
-  return await pool.getDB();
+  return await pool.getConnection();
 };
 
 module.exports = getDB;
