@@ -3,7 +3,8 @@ const getVotes = require('./getVotes');
 const postPlace = require('./postPlace');
 const postVote = require('./postVote');
 const getPlacesByCategory = require('./getPlaceByCategory');
-const getCategories = require('./getCategories')
+const getCategories = require('./getCategories');
+const getPlacesbyCountry = require('./getPlacesbyCountry');
 
 module.exports = {
   getPlaces,
@@ -11,5 +12,6 @@ module.exports = {
   postPlace,
   postVote,
   getCategories,
-  getPlacesByCategory
+  getPlacesByCategory,
+  getPlacesbyCountry,
 };
