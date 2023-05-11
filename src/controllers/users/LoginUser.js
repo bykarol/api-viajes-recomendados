@@ -7,20 +7,20 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).send('Faltan datos');
+      return res.status(400).send('Data is missing');
     }
 
     const [user] = await connect.query(
       `
       SELECT id, role, active
       FROM users
-      WHERE email = ? AND password = SHA(?, 512)
+      WHERE email = ? AND password = SHA2(?,512)
       `,
       [email, password]
     );
 
     if (user.length === 0) {
-      return res.status(401).send('Email o password incorrectos');
+      return res.status(401).send('Incorrect email or password');
     }
 
     const info = {
@@ -38,9 +38,9 @@ const loginUser = async (req, res) => {
       },
     });
     connect.release();
-  } catch (error) {
-    console.log(error);
-    res.status(400).send(error);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
   }
 };
 

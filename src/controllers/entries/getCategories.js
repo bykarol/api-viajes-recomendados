@@ -18,9 +18,9 @@ const getCategories = async (req, res) => {
       status: 'ok',
       message: getCategories,
     });
-  } catch (e) {
-    console.log(e);
-    res.status(500).send('Error en el servidor');
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Server error');
   }
 };
 

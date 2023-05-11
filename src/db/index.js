@@ -1,6 +1,6 @@
 const getDB = require('./db');
 
-async function createDB(req, res) {
+async function createDB() {
   try {
     //conexión con la db
     const connect = await getDB();

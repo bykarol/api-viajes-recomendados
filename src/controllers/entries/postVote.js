@@ -5,14 +5,15 @@ const postVotes = async (req,res)=> {
 try{
     const { vote, comment, user_id, place_id } = req.body;
     const connect = await getDB();
-    const [userVote] = connect.query(
+    await connect.query(`USE travelexperience;`)
+    const [userVote] = await connect.query(
         `INSERT INTO votes (vote, comment, user_id, place_id) VALUES (?,?,?,?)`,[vote, comment, user_id, place_id]
     );
     connect.release();
     res.status(200).send({
-    "status": "ok",
-    "message":"Votación realizada exitosamente.",
-    "data": [userVote]
+    status: "ok",
+    message:"A successfully conducted vote",
+    data: [userVote]
 
     })
 
