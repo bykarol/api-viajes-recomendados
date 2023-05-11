@@ -4,15 +4,13 @@ const router = express.Router();
 //importar los controllers
 const {
   postUser,
-  loginUser,
+  //loginUser,
 } = require('../controllers/users');
 
 //middlewares
 
-
 //users endpoints
 router.post('/users/newuser', postUser);
-router.post('/users/login', loginUser);
+//router.post('/users/login', loginUser);
 
 module.exports = router;
-
