@@ -2,7 +2,7 @@ const mysql = require('mysql2/promise');
 
 require('dotenv').config();
 
-const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE } = process.env;
+const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD } = process.env;
 
 let pool;
 
@@ -13,7 +13,6 @@ const getDB = async () => {
       host: MYSQL_HOST,
       user: MYSQL_USER,
       password: MYSQL_PASSWORD,
-      database: MYSQL_DATABASE,
       timezone: 'Z',
     });
   }
