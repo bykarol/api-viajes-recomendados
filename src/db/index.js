@@ -1,4 +1,14 @@
-const getDB = require('./db');
+/**
+ *  Este archivo nicializa una base de datos
+ * la base de datos tiene 5 usuarios creados
+ * 4 entradas creadas
+ * 5 categorías
+ * algunas votaciones
+*/
+const mysql = require('mysql2/promise');
+require('dotenv').config();
+
+const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD } = process.env;
 
 async function createDB() {
   try {
@@ -136,5 +146,19 @@ async function createDB() {
     process.exit(1);
   }
 }
+
+let pool;
+const getDB = async () => {
+  if (!pool) {
+    pool = mysql.createPool({
+      connectionLimit: 10,
+      host: MYSQL_HOST,
+      user: MYSQL_USER,
+      password: MYSQL_PASSWORD,
+      timezone: 'Z',
+    });
+  }
+  return await pool.getConnection();
+};
 
 createDB();
