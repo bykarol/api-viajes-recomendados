@@ -13,7 +13,7 @@ const postUser = async (req, res) => {
     if (userExist.length > 0) {
       return res.status(409).send({
         status: 'error',
-        mensaje: 'El usuario ya existe',
+        mensaje: 'user already exists',
       });
     }
 
@@ -26,7 +26,7 @@ const postUser = async (req, res) => {
 
     return res.status(200).send({
       status: 'ok',
-      mensaje: 'Usuario creado correctamente',
+      mensaje: 'user created successfully',
       data: user,
     });
   } catch (error) {

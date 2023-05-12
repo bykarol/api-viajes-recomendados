@@ -7,7 +7,7 @@ const getPlaces = async (req, res) => {
     const { city } = req.params;
 
     if (!city) {
-      const error = new Error('No se econtró nada con esos parámetros');
+      const error = new Error('Nothing found with these parameters');
       error.httpStatus = 404;
       throw error;
     }
