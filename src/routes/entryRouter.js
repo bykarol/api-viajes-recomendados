@@ -8,8 +8,9 @@ const {
   getPlacesbyCountry,
   postVote,
   getCategories,
-  getPlacesByCategory
+  getPlacesByCategory,
 } = require('../controllers/entries');
+const isUser = require('../middlewares/isUser');
 
 const router = express.Router();
 //middlewares
@@ -19,9 +20,9 @@ router.get('/places/listvotes', getVotes);
 router.get('/places/city/:city', getPlaces);
 router.get('/places/country/:country', getPlacesbyCountry);
 
-router.post('/places/newplace', postPlace);
-router.post('/places/newvote', postVote);
+router.post('/places/newplace', isUser, postPlace);
+router.post('/places/newvote', isUser, postVote);
 router.get('/places/votes', getCategories);
-router.get('/places/place/:category', getPlacesByCategory)
+router.get('/places/place/:category', getPlacesByCategory);
 
 module.exports = router;

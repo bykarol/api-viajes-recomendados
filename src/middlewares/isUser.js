@@ -29,7 +29,7 @@ const isUser = async (req, res, next) => {
     const timestampCreateToken = new Date(tokenInfo.iat * 1000);
 
     if (timestampCreateToken < lastAuthUpdate) {
-      res.status(401).send('Token caducado');
+      res.status(401).send('Token expired');
     }
 
     req.userInfo = tokenInfo;
