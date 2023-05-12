@@ -9,15 +9,18 @@ const {
   postVote,
   getCategories,
   getPlacesByCategory,
+  getPlacesByID,
+  listPlaces,
 } = require('../controllers/entries');
+
+//middlewares
 const isUser = require('../middlewares/isUser');
+const placeExists = require('../middlewares/placeExists');
 
 const router = express.Router();
-//middlewares
-
 //entries endpoints
-//router.get('/', listPlaces)
-//router.get('/places/:id', getPlacesByID);
+router.get('/', listPlaces);
+router.get('/places/:id', placeExists, getPlacesByID);
 router.get('/places/listvotes', getVotes);
 router.get('/places/listcategories', getCategories);
 router.get('/places/category/:category', getPlacesByCategory);
