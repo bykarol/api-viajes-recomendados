@@ -2,7 +2,7 @@ const getDB = require('../../db/db');
 const getCategories = async (req, res) => {
   try {
     const connect = await getDB();
-    const getCategories = await connect.query(
+    const [getCategories] = await connect.query(
       `SELECT 
       c.name as category, 
       p.title as activity 

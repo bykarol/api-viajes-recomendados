@@ -3,7 +3,7 @@ const getDB = require('../../db/db');
 const getVotes = async (req, res) => {
   try {
     const connect = await getDB();
-    const votesPlaces = await connect.query(
+    const [votesPlaces] = await connect.query(
       `SELECT p.*, SUM(v.vote) AS "total votes"
             FROM places p
             INNER JOIN votes v ON p.id = v.place_id
@@ -14,7 +14,7 @@ const getVotes = async (req, res) => {
 
     res.status(200).send({
       status: 'ok',
-      message: votesPlaces
+      message: votesPlaces,
     });
   } catch (e) {
     console.log(e);

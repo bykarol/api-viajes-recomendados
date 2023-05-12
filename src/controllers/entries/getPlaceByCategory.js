@@ -4,7 +4,7 @@ const getPlacesByCategory = async (req, res) => {
   const category = req.params.category;
   try {
     const connect = await getDB();
-    const getPlacesByCategory = await connect.query(
+    const [getPlacesByCategory] = await connect.query(
       `SELECT c.name AS category,
             p.title AS activity
        FROM places p 
