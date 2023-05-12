@@ -4,17 +4,17 @@ const getVotes = async (req, res) => {
   try {
     const connect = await getDB();
     const [votesPlaces] = await connect.query(
-      `SELECT p.*, SUM(v.vote) AS "total votes"
-            FROM places p
-            INNER JOIN votes v ON p.id = v.place_id
-            GROUP BY p.id ORDER BY SUM(v.vote) DESC;`
+      `SELECT sum(v.vote)/count(v.vote) as votes_average, p.title, p.shortDescription, p.city, p.country
+      FROM places p
+      INNER JOIN votes v ON p.id = v.place_id
+      GROUP BY p.id ORDER BY SUM(v.vote) DESC;`
     );
 
     connect.release();
 
     res.status(200).send({
       status: 'ok',
-      message: votesPlaces,
+      data: votesPlaces,
     });
   } catch (e) {
     console.log(e);

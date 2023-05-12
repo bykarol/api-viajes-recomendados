@@ -6,8 +6,8 @@ const getPlacesByID = async (req, res) => {
     const { id } = req.params;
 
     const [getPlacesByID] = await connect.query(
-      `SELECT title, shortDescription, largeDescription, date, country, city
-        FROM places   WHERE id=?`,
+      `SELECT *
+        FROM places WHERE id=?`,
       [id]
     );
 
@@ -15,7 +15,7 @@ const getPlacesByID = async (req, res) => {
 
     res.status(200).send({
       status: 'ok',
-      message: getPlacesByID,
+      data: getPlacesByID,
     });
   } catch (err) {
     console.log(err);

@@ -1,4 +1,4 @@
-const getPlaces = require('./getPlaces');
+const getPlacesByCity = require('./getPlacesByCity');
 const getVotes = require('./getVotes');
 const postPlace = require('./postPlace');
 const postVote = require('./postVote');
@@ -9,7 +9,7 @@ const listPlaces = require('./listPlaces');
 const getPlacesByID = require('./getPlacesByID');
 
 module.exports = {
-  getPlaces,
+  getPlacesByCity,
   getVotes,
   postPlace,
   postVote,
