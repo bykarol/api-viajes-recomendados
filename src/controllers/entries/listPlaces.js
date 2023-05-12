@@ -15,7 +15,7 @@ const listPlaces = async (req, res) => {
 
     res.status(200).send({
       status: 'ok',
-      message: listPlaces,
+      data: listPlaces,
     });
   } catch (err) {
     console.log(err);

@@ -1,4 +1,5 @@
 const getDB = require('../../db/db');
+const _ = require('lodash'); //paquete que permite agrupar elementos en un array de objetos
 
 const getPlacesbyCountry = async (req, res) => {
   try {
@@ -13,16 +14,17 @@ const getPlacesbyCountry = async (req, res) => {
     }
 
     const [experiences] = await connect.query(
-      `SELECT title, shortDescription, largeDescription, date, country, city
+      `SELECT title, shortDescription, largeDescription, date, city, country
        FROM places   WHERE country=?`,
       [country]
     );
 
     connect.release();
+    const groupedbyCountry = _.chain(experiences).groupBy("country");
 
     res.status(200).send({
       status: 'ok',
-      data: experiences,
+      data: groupedbyCountry,
     });
   } catch (error) {
     console.log(error);
