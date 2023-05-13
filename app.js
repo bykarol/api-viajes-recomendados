@@ -1,5 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
+const fileUpload = require('express-fileupload');
+const path = require('path');
+
 require('dotenv').config();
 const PORT = process.env.PORT;
 
@@ -9,6 +12,14 @@ const entryRouter = require('./src/routes/entryRouter');
 const app = express();
 app.use(morgan('dev'));
 app.use(express.json());
+
+const staticDirectory = path.join(__dirname, process.env.UPLOADS_DIRECTORY_FROM_APP);
+
+app.use(express.static(staticDirectory));
+
+app.use(fileUpload());
+
+//end-point
 app.use(userRouter);
 app.use(entryRouter);
 

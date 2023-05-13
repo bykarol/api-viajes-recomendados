@@ -7,6 +7,7 @@ const getCategories = require('./getCategories');
 const getPlacesbyCountry = require('./getPlacesbyCountry');
 const listPlaces = require('./listPlaces');
 const getPlacesByID = require('./getPlacesByID');
+const postPhoto = require('./postPhoto');
 
 module.exports = {
   getPlacesByCity,
@@ -18,4 +19,5 @@ module.exports = {
   getPlacesbyCountry,
   listPlaces,
   getPlacesByID,
+  postPhoto
 };
