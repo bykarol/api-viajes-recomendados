@@ -11,6 +11,7 @@ const {
   getPlacesByCategory,
   getPlacesByID,
   listPlaces,
+  postPhoto
 } = require('../controllers/entries');
 
 //middlewares
@@ -29,6 +30,6 @@ router.get('/places/country/:country', getPlacesbyCountry);
 
 router.post('/places/newplace', isUser, postPlace);
 router.post('/places/newvote', isUser, postVote);
-//router.post('/places/addPhoto', isUser, postPhoto);
+router.post('/places/addPhoto/:place_id', postPhoto);
 
 module.exports = router;
