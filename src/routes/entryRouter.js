@@ -11,12 +11,14 @@ const {
   getPlacesByCategory,
   getPlacesByID,
   listPlaces,
-  postPhoto
+  postPhoto,
+  deletePlace,
 } = require('../controllers/entries');
 
 //middlewares
 const isUser = require('../middlewares/isUser');
 const placeExists = require('../middlewares/placeExists');
+const isMyEntry = require('../middlewares/isMyEntry');
 
 const router = express.Router();
 //entries endpoints
@@ -31,5 +33,13 @@ router.get('/places/country/:country', getPlacesbyCountry);
 router.post('/places/newplace', isUser, postPlace);
 router.post('/places/newvote', isUser, postVote);
 router.post('/places/addPhoto/:place_id', postPhoto);
+
+router.delete(
+  '/places/delete/:id',
+  isUser,
+  placeExists,
+  isMyEntry,
+  deletePlace
+);
 
 module.exports = router;

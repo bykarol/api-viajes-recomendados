@@ -18,7 +18,7 @@ const placeExists = async (req, res, next) => {
     );
 
     if (place.length === 0) {
-      return res.status(404).send('Place not exists');
+      return res.status(404).send('The place not exists');
     }
 
     next();
