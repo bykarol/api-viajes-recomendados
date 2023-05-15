@@ -5,11 +5,11 @@ const getCategories = async (req, res) => {
   try {
     const connect = await getDB();
     const [result] = await connect.query(
-      `SELECT p.*, c.name as category_name
+      `SELECT c.name as category_name, p.title, p.shortDescription, p.country, p.id as "place_id"
       FROM categories c
       INNER JOIN place_category pc ON c.id = pc.category_id
       INNER JOIN places p ON p.id = pc.place_id
-      ORDER BY c.id;`
+      ORDER BY c.name;`
     );
     connect.release();
 
@@ -17,6 +17,7 @@ const getCategories = async (req, res) => {
 
     res.status(200).send({
       status: 'ok',
+      message: "List of places grouped by categories",
       categories: groupedbyCategory,
     });
   } catch (err) {
