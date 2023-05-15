@@ -4,17 +4,19 @@ const listPlaces = async (req, res) => {
   try {
     const connect = await getDB();
     const [listPlaces] = await connect.query(
-      `SELECT p.date, p.title, p.shortDescription, p.largeDescription, p.city, p.country, c.name as category
+      `SELECT p.date, p.title, p.shortDescription, p.country, sum(v.vote)/count(v.vote) as votes_average, p.id as "place_id"
       FROM places p
-      INNER JOIN place_category pc ON pc.place_id=p.id
-      INNER JOIN categories c ON c.id=pc.category_id
-      ORDER BY p.date ASC;`
+      LEFT JOIN votes v ON p.id=v.place_id
+      GROUP BY p.id
+      ORDER BY p.date DESC;`
     );
 
     connect.release();
 
     res.status(200).send({
       status: 'ok',
+      message: "List of places ordered by date",
+      length: listPlaces.length,
       data: listPlaces,
     });
   } catch (err) {
