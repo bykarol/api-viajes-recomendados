@@ -35,9 +35,9 @@ npm start
 
 Este proyecto inicializa una base de datos llamada travelexperience, la cual está diseñada para almacenar información sobre lugares turísticos, usuarios, votaciones y categorías relacionadas con experiencias de viajes. La misma consta de las siguientes tablas:
 
-![Diagrama entridad relación](ubicacion_de_la_imagen){width=200px}
+![Diagrama entridad relación](https://bykarol.github.io/api-viajes-recomendados/src/db/travelExperience-DER.png){width=200px}
 
-Los campos `user_ids.active`, `user_ids.role`, `user_ids.deleted`, `user_ids.date`, `votes.date`, `places.date`, `photos.date` se registran con valores predeterminados si no se especifican al momento de crear los registros.
+Los campos `users.active`, `users.role`, `users.deleted`, `users.date`, `votes.date`, `places.date`, `photos.date` se registran con valores predeterminados si no se especifican al momento de crear los registros.
 
 ## Datos de ejemplo
 
@@ -45,55 +45,58 @@ La base de datos travelexperience se inicializa con los siguientes datos de ejem
 
 ### Tabla users
 
-- User_id 1:
+  - id: 1
   - Email: ilethem0@google.com.au
   - password: 993870144
-- User_id 2:
+  - id: 2
   - Email: kmungan1@howstuffworks.com
   - password: 497494899
-- User_id 3:
+  - id: 3
   - Email: ydibbert2@businesswire.com
   - password: 776631050
-- User_id 4:
+  - id: 4
   - Email: tmcgorley3@studiopress.com
   - password: 921948685
-- User_id 5:
+  - id: 5
   - Email: eimbrey4@cpanel.net
   - password: 304168000
 
 ### Tabla Places
 
-- Place 1:
+  - id: 1
   - Title: Nadando con los tiburones
   - ShortDescription: Un día de submarinismo con los tiburones blancos
   - City: Ningaloo
   - Country: Australia
   - User_id: 1
-- Place 2:
+
+  - id: 2
   - Title: Avistamiento de ballenas
   - ShortDescription: Ven a ver a las ballenas jorobadas
   - City: Santo Domingo
   - Country: Dominican Republic
   - User_id: 1
-- Place 3:
+
+  - id 3:
   - Title: El Salto Ángel
   - ShortDescription: Ven a conocer el salto de agua más alto del mundo
   - City: Canaima
   - Country: Venezuela
   - User_id: 2
-- Place 4:
+
+  - id: 4
   - Title: Mercado de San Miguel
   - ShortDescription: Mercado emblemático para los amantes de la buena gastronomía
   - City: Madrid
   - Country: Spain
   - User_id: 5
 
-### Votaciones
+### Tabla Votes
 
 - Votes 1:
   - Vote: 5
   - Comment: 100% Recommended
-  - User_id: User_id 3
+  - User_id: 3
   - Place: Place 1
 - Votes 2:
   - Vote: 3
@@ -195,14 +198,11 @@ USUARIO REGISTRADO
   MERCEDES IÑIGUEZ, [mercedesiniguez](https://www.linkedin.com/in/mercedes-iniguez-quintela-1424ba7/)
 
 ## AGRADECIMIENTOS
-  Hack a Boss
+[Hack a Boss](https://www.hackaboss.com/)
     
 ## CONTRIBUCIONES
  Si quieres contribuir en este proyecto, ponte en contacto con nosotros
    
- 
- 
-  
   
   
 
