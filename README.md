@@ -35,7 +35,7 @@ npm start
 
 Este proyecto inicializa una base de datos llamada travelexperience, la cual está diseñada para almacenar información sobre lugares turísticos, usuarios, votaciones y categorías relacionadas con experiencias de viajes. La misma consta de las siguientes tablas:
 
-![Diagrama entridad relación](https://bykarol.github.io/api-viajes-recomendados/src/db/travelExperience-DER.png){width=200px}
+![Diagrama entridad relación](https://bykarol.github.io/api-viajes-recomendados/src/db/travelExperience-DER.png)
 
 Los campos `users.active`, `users.role`, `users.deleted`, `users.date`, `votes.date`, `places.date`, `photos.date` se registran con valores predeterminados si no se especifican al momento de crear los registros.
 
