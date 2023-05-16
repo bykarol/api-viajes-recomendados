@@ -1,110 +1,49 @@
-## Title
+## PROYECTO
 Viajes recomendados
 
 ## DESCRIPCIÓN
-Desarrollo de una API que permite gestionar un portal donde los User_ids puedan publicar recomendaciones de viaje, tanto de Placees como de experiencias poco conocidas. En ella, hay dos tipos de User_ids:
-
-   User_idS SIN REGISTRAR:
-    
-    - Buscar recomendaciones por Place, Category
-    
-    - Ordenar los resultados de búsqueda por Votes
-    
-    - Ver detalle de una recomendación
-    
-    - Login (con email y password)
-    
-    - Registrarse
-    
-   User_idS REGISTRADOS, tienen acceso a:
-   
-    - Publicar recomendaciones (Title, Category, Place, entradilla, texto, foto)
-    
-    - Votar recomendaciones de otros User_ids                                         
+Desarrollo de una API que permite gestionar un portal donde los usuarios puedan publicar recomendaciones de viaje, tanto de lugares como de experiencias poco conocidas. En ella, hay dos tipos de usuarios: USUARIOS SIN REGISTRAR y USUARIOS REGISTRADOS.          
 
 ## ¿CÓMO COMENZAR?
-- Configurar el archivo .env (utilizar el archivo .env.example que hemos añadido como
-  ejemplo).
+- Configurar el archivo .env (utilizar el archivo .env.example que hemos añadido como ejemplo).
+  
 - Instalar las dependencias:
-
 ```bash
 npm install
 ```
-- Inicializar la base de datos con el siguiente comando:
 
+- Inicializar la base de datos con el siguiente comando:
 ```bash
 npm run initDB
 ```
+
 - Levantar el servidor:
-- Modo desarrollo (nodemon):
+   - Modo desarrollo (nodemon):
 ```bash
 npm run dev
 ```
-- Modo normal:
+   - Modo normal:
 ```bash
 npm start
 ```
-​-Ayuda adicional​:
-- Exporta de la carpeta &quot;db&quot; la colección Postman para probar las rutas.
-​
-## BASE DE DATOS (TravelExperience)
 
-Este proyecto inicializa una base de datos llamada TravelExperience, la cual está diseñada para almacenar información sobre Placees turísticos, User_ids, votaciones y Categories relacionadas con experiencias de viaje.
+- Ayuda adicional:
+   - Exportar la colección Postman para probar las rutas. El mismo lo consigues en el root del repositorio bajo el siguiente nombre: travelexperience.postman_collection.json
 
-### user_ids:
-- id (clave primaria, autoincremental)
-- email (requerido y único)
-- password (requerido)
-- name
-- avatar
-- active (valor predeterminado: false)
-- role (admin/normal, requerido, valor predeterminado: normal)
-- regCode
-- deleted (valor predeterminado: false)
-- lastAuthUpdate
-- recoverCode
-- date (requerido, valor predeterminado: fecha actual)
 
-### places:
-- id (clave primaria, autoincremental)
-- title (requerido)
-- ShortDescription (requerido)
-- largeDescription
-- date (requerido, valor predeterminado: fecha actual)
-- city (requerido)
-- country (requerido)
-- user_id_id
+## BASE DE DATOS (travelexperience)
 
-### photos:
-- id (clave primaria, autoincremental)
-- date (requerido, valor predeterminado: fecha actual)
-- photo (requerido)
-- place_id
+Este proyecto inicializa una base de datos llamada travelexperience, la cual está diseñada para almacenar información sobre lugares turísticos, usuarios, votaciones y categorías relacionadas con experiencias de viajes. La misma consta de las siguientes tablas:
 
-### votes:
-- id (clave primaria, autoincremental)
-- vote (requerido)
-- comment
-- date (requerido, valor predeterminado: fecha actual)
-- user_id_id
-- place_id
-
-### categories:
-- id (clave primaria, autoincremental)
-- name (requerido)
-
-### place_category:
-- id (clave primaria, autoincremental)
-- category_id
-- place_id
+![Diagrama entridad relación](ubicacion_de_la_imagen){width=200px}
 
 Los campos `user_ids.active`, `user_ids.role`, `user_ids.deleted`, `user_ids.date`, `votes.date`, `places.date`, `photos.date` se registran con valores predeterminados si no se especifican al momento de crear los registros.
 
 ## Datos de ejemplo
 
-La base de datos TravelExperience se inicializa con los siguientes datos de ejemplo:
+La base de datos travelexperience se inicializa con los siguientes datos de ejemplo:
 
-### User_ids
+### Tabla users
 
 - User_id 1:
   - Email: ilethem0@google.com.au
@@ -122,32 +61,32 @@ La base de datos TravelExperience se inicializa con los siguientes datos de ejem
   - Email: eimbrey4@cpanel.net
   - password: 304168000
 
-### Places
+### Tabla Places
 
 - Place 1:
   - Title: Nadando con los tiburones
   - ShortDescription: Un día de submarinismo con los tiburones blancos
   - City: Ningaloo
   - Country: Australia
-  - User_id: User_id 1
+  - User_id: 1
 - Place 2:
   - Title: Avistamiento de ballenas
   - ShortDescription: Ven a ver a las ballenas jorobadas
   - City: Santo Domingo
   - Country: Dominican Republic
-  - User_id: User_id 1
+  - User_id: 1
 - Place 3:
   - Title: El Salto Ángel
   - ShortDescription: Ven a conocer el salto de agua más alto del mundo
   - City: Canaima
   - Country: Venezuela
-  - User_id: User_id 2
+  - User_id: 2
 - Place 4:
   - Title: Mercado de San Miguel
   - ShortDescription: Mercado emblemático para los amantes de la buena gastronomía
   - City: Madrid
   - Country: Spain
-  - User_id: User_id 5
+  - User_id: 5
 
 ### Votaciones
 
@@ -191,13 +130,13 @@ La base de datos TravelExperience se inicializa con los siguientes datos de ejem
 - Category 5: Relax
 - Category 6: Romantic
 
-​
-## ENDPOINTS DEL User_id
+
+## ENDPOINTS DEL USUARIOS
 
    - **POST** - [&quot;/user_ids/login&quot;] - Logea a un User_id retornando un token.
 - **POST** - [&quot;/user_ids/newuser_id &quot;] – Crea un nuevo User_id.
-​
-## ENDPOINTS DE PlaceES
+
+## ENDPOINTS DE LUGARES
 - **GET** - [&quot;/&quot;] – Devuelve información general de todas las entradas ordenadas de forma
 descendente (la más nueva arriba).
 - **GET** - [&quot;/places/listvotes&quot;] – Devuelve una lista de todas las entradas ordenadas por la
@@ -219,8 +158,8 @@ parámetro. `Token requerido`
 - **DELETE** - [&quot;/places/delete/:id&quot;] – Permite eliminar la entrada correspondiente al id
 pasado como parámetro. `Token requerido`
 
-## PERMISO
-User_id ANONIMO
+## PERMISOS
+USUARIO ANÓNIMO
    BUSCAR RECOMEDACIONES
    GET / - listar todas las entradas, la más reciente arriba
    GET /places/:id – ver detalle de una entrada
@@ -232,7 +171,7 @@ User_id ANONIMO
    POST /user_ids/newuser_id – crear nuevo User_id
    POST /user_ids/login – permite logear a un User_id
 
-User_id REGISTRADO
+USUARIO REGISTRADO
    POST /places/newplace – permite crear una nueva entrada
    POST /places/newvote – permite votar
    POST /places/addPhoto – permite añadir fotos   
