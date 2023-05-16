@@ -46,83 +46,92 @@ La base de datos travelexperience se inicializa con los siguientes datos de ejem
 ### Tabla users
 
   - id: 1
-  - Email: ilethem0@google.com.au
+  - email: ilethem0@google.com.au
   - password: 993870144
+  
   - id: 2
-  - Email: kmungan1@howstuffworks.com
+  - email: kmungan1@howstuffworks.com
   - password: 497494899
+  
   - id: 3
-  - Email: ydibbert2@businesswire.com
+  - email: ydibbert2@businesswire.com
   - password: 776631050
+  
   - id: 4
-  - Email: tmcgorley3@studiopress.com
+  - email: tmcgorley3@studiopress.com
   - password: 921948685
+  
   - id: 5
-  - Email: eimbrey4@cpanel.net
+  - email: eimbrey4@cpanel.net
   - password: 304168000
 
 ### Tabla Places
 
   - id: 1
-  - Title: Nadando con los tiburones
-  - ShortDescription: Un día de submarinismo con los tiburones blancos
-  - City: Ningaloo
-  - Country: Australia
-  - User_id: 1
+  - title: Nadando con los tiburones
+  - shortDescription: Un día de submarinismo con los tiburones blancos
+  - city: Ningaloo
+  - country: Australia
+  - user_id: 1
 
   - id: 2
-  - Title: Avistamiento de ballenas
-  - ShortDescription: Ven a ver a las ballenas jorobadas
-  - City: Santo Domingo
-  - Country: Dominican Republic
-  - User_id: 1
+  - title: Avistamiento de ballenas
+  - shortDescription: Ven a ver a las ballenas jorobadas
+  - city: Santo Domingo
+  - country: Dominican Republic
+  - user_id: 1
 
   - id 3:
-  - Title: El Salto Ángel
-  - ShortDescription: Ven a conocer el salto de agua más alto del mundo
-  - City: Canaima
-  - Country: Venezuela
-  - User_id: 2
+  - title: El Salto Ángel
+  - shortDescription: Ven a conocer el salto de agua más alto del mundo
+  - city: Canaima
+  - country: Venezuela
+  - user_id: 2
 
   - id: 4
-  - Title: Mercado de San Miguel
-  - ShortDescription: Mercado emblemático para los amantes de la buena gastronomía
-  - City: Madrid
-  - Country: Spain
-  - User_id: 5
+  - title: Mercado de San Miguel
+  - shortDescription: Mercado emblemático para los amantes de la buena gastronomía
+  - city: Madrid
+  - country: Spain
+  - user_id: 5
 
 ### Tabla Votes
 
-- Votes 1:
-  - Vote: 5
-  - Comment: 100% Recommended
-  - User_id: 3
-  - Place: Place 1
-- Votes 2:
-  - Vote: 3
-  - Comment: not so good
-  - User_id: User_id 2
-  - Place: Place 2
-- Votes 3:
-  - Vote: 1
-  - Comment: so bad
-  - User_id: User_id 3
-  - Place: Place 2
-- Votes 4:
-  - Vote: 5
-  - Comment: Amazing
-  - User_id: User_id 5
-  - Place: Place 1
-- Votes 5:
-  - Vote: 5
-  - Comment: Must do
-  - User_id: User_id 4
-  - Place: Place 3
-- Votes 6:
-  - Vote: 5
-  - Comment: Stunning
-  - User_id: User_id 1
-  - Place: Place 4
+  - id: 1
+  - vote: 5
+  - comment: 100% Recommended
+  - user_id: 3
+  - place_id: 1
+  
+  - id: 2
+  - vote: 3
+  - comment: not so good
+  - user_id: User_id 2
+  - place_id: 2
+  
+  - id: 3
+  - vote: 1
+  - comment: so bad
+  - user_id: 3
+  - place_id: 2
+  
+  - id: 4
+  - vote: 5
+  - comment: Amazing
+  - user_id: User_id 5
+  - place_id: 1
+  
+  - id: 5
+  - vote: 5
+  - comment: Must do
+  - user_id: User_id 4
+  - place_id: 3
+  
+  - id: 6
+  - vote: 5
+  - comment: Stunning
+  - user_id: 1
+  - place_id: 4
 
 ### Categories
 
@@ -136,30 +145,22 @@ La base de datos travelexperience se inicializa con los siguientes datos de ejem
 
 ## ENDPOINTS DEL USUARIOS
 
-- **POST** - [&quot;/user_ids/login&quot;] - Logea a un User_id retornando un token.
-- **POST** - [&quot;/user_ids/newuser_id &quot;] – Crea un nuevo User_id.
+- **POST** - [&quot;/users/login&quot;] - Logea a un usuario retornando un token.
+- **POST** - [&quot;/users/newuser&quot;] – Crea un nuevo usuario.
+- **PATCH** - [&quot;/users/newpassword&quot;] – Crea un nuevo usuario.
 
 ## ENDPOINTS DE LUGARES
-- **GET** - [&quot;/&quot;] – Devuelve información general de todas las entradas ordenadas de forma
-descendente (la más nueva arriba).
-- **GET** - [&quot;/places/listvotes&quot;] – Devuelve una lista de todas las entradas ordenadas por la
-más votada.
-- **GET** - [&quot;/places/:id&quot;] - Devuelve la entrada correspondiente al id pasado como
-parámetro.
-- **GET** - [&quot;/places/category/:category&quot;] - Devuelve una lista de todas las entradas
-agrupadas por Categories.
-- **GET** - [&quot;/places/city/:city&quot;] - Devuelve todas los Placees que coincidan con la City
-pasada como parámetro.
-- **GET** - [&quot;/places/country/:country&quot;] - Devuelve todas los Placees que coincidan con el Country
-pasado como parámetro.
-- **POST** - [&quot;/places/newplace&quot;] – Permite postear una nueva entrada (Place o experiencia).
-`Token requerido`
-- **POST** - [&quot;/places/newvote&quot;] – Permite votar un Place y agregar un Comment. `Token
-requerido`
-- **POST** - [&quot;/places/addPhoto/:place_id&quot;] – Permite añadir fotos al Place indicado por
-parámetro. `Token requerido`
-- **DELETE** - [&quot;/places/delete/:id&quot;] – Permite eliminar la entrada correspondiente al id
-pasado como parámetro. `Token requerido`
+- **GET** - [&quot;/&quot;] – Devuelve información general de todas las entradas ordenadas de forma descendente (la más nueva arriba).
+- **GET** - [&quot;/places/listcategories&quot;] – Devuelve una lista de todas las entradas agrupadas por categorías.
+- **GET** - [&quot;/places/listvotes&quot;] – Devuelve una lista de todas las entradas ordenadas por la más votada.
+- **GET** - [&quot;/places/:id&quot;] - Devuelve la entrada correspondiente al id pasado como parámetro.
+- **GET** - [&quot;/places/category/:category&quot;] - Devuelve una lista de todas las entradas que se encuentren en la categoría enviada como parámetro.
+- **GET** - [&quot;/places/city/:city&quot;] - Devuelve todas los lugares que coincidan con la City enviada como parámetro.
+- **GET** - [&quot;/places/country/:country&quot;] - Devuelve todas los lugares que coincidan con el Country enviado como parámetro.
+- **POST** - [&quot;/places/newplace&quot;] – Permite postear una nueva entrada (lugar o experiencia). `Token requerido`
+- **POST** - [&quot;/places/newvote&quot;] – Permite votar un lugar y agregar un commentario. `Token requerido`
+- **POST** - [&quot;/places/addPhoto/:place_id&quot;] – Permite añadir fotos al lugar indicado por parámetro, el archivo se envía por el body (form-data). `Token requerido`
+- **DELETE** - [&quot;/places/delete/:id&quot;] – Permite eliminar la entrada correspondiente al id pasado como parámetro. `Token requerido`
 
 ## PERMISOS
 USUARIO ANÓNIMO
