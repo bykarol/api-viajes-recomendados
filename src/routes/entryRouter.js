@@ -32,7 +32,7 @@ router.get('/places/country/:country', getPlacesbyCountry);
 
 router.post('/places/newplace', isUser, postPlace);
 router.post('/places/newvote', isUser, postVote);
-router.post('/places/addPhoto/:place_id', postPhoto);
+router.post('/places/addphoto/:place_id', postPhoto);
 
 router.delete(
   '/places/delete/:id',
