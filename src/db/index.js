@@ -1,5 +1,5 @@
 /**
- *  Este archivo nicializa una base de datos
+ *  Este archivo inicializa una base de datos
  * la base de datos tiene 5 usuarios creados
  * 4 entradas creadas
  * 5 categorías
@@ -84,7 +84,8 @@ async function createDB() {
           category_id INT UNSIGNED NOT NULL,
           place_id INT UNSIGNED NOT NULL,
           FOREIGN KEY (place_id) REFERENCES places(id),
-        FOREIGN KEY (category_id) REFERENCES categories(id)   
+        FOREIGN KEY (category_id) REFERENCES categories(id),
+        UNIQUE(place_id, category_id)
       );
     `);
     //poblar data
@@ -138,7 +139,6 @@ async function createDB() {
       (4, 4);      
     `);
 
-    connect.release();
     console.log("Database and tables created succesfully");
     process.exit(0);
   } catch (error) {

@@ -92,102 +92,39 @@ La base de datos travelexperience se inicializa con los siguientes datos de ejem
 
 ### Tabla users
 
-  - id: 1
-  - email: ilethem0@google.com.au
-  - password: 993870144
-  
-  - id: 2
-  - email: kmungan1@howstuffworks.com
-  - password: 497494899
-  
-  - id: 3
-  - email: ydibbert2@businesswire.com
-  - password: 776631050
-  
-  - id: 4
-  - email: tmcgorley3@studiopress.com
-  - password: 921948685
-  
-  - id: 5
-  - email: eimbrey4@cpanel.net
-  - password: 304168000
+| **id** |          **email**         | **password** |
+|:------:|:--------------------------:|:------------:|
+|    1   | ilethem0@google.com.au     | 993870144    |
+|    2   | kmungan1@howstuffworks.com | 497494899    |
+|    3   | ydibbert2@businesswire.com | 776631050    |
+|    4   | tmcgorley3@studiopress.com | 921948685    |
+|    5   | eimbrey4@cpanel.net        | 304168000    |
 
 ### Tabla Places
 
-  - id: 1
-  - title: Nadando con los tiburones
-  - shortDescription: Un día de submarinismo con los tiburones blancos
-  - city: Ningaloo
-  - country: Australia
-  - user_id: 1
-
-  - id: 2
-  - title: Avistamiento de ballenas
-  - shortDescription: Ven a ver a las ballenas jorobadas
-  - city: Santo Domingo
-  - country: Dominican Republic
-  - user_id: 1
-
-  - id 3:
-  - title: El Salto Ángel
-  - shortDescription: Ven a conocer el salto de agua más alto del mundo
-  - city: Canaima
-  - country: Venezuela
-  - user_id: 2
-
-  - id: 4
-  - title: Mercado de San Miguel
-  - shortDescription: Mercado emblemático para los amantes de la buena gastronomía
-  - city: Madrid
-  - country: Spain
-  - user_id: 5
+| **id** | **title**                 | **shortDescription**                                         |    **city**   |     **country**    | **user_id** |
+|:------:|---------------------------|--------------------------------------------------------------|:-------------:|:------------------:|-------------|
+|    1   | Nadando con los tiburones | Un día de submarinismo con los tiburones blancos             |    Ningaloo   |      Australia     | 1           |
+|    2   | Avistamiento de ballenas  | Ven a ver a las ballenas jorobadas                           | Santo Domingo | Dominican Republic | 1           |
+|    3   | El Salto Ángel            | Ven a conocer el salto de agua más alto del mundo            |    Canaima    |      Venezuela     | 2           |
+|    4   | Mercado de San Miguel     | Mercado emblemático para los amantes de la buena gastronomía |     Madrid    |        Spain       | 5           |
 
 ### Tabla Votes
 
-  - id: 1
-  - vote: 5
-  - comment: 100% Recommended
-  - user_id: 3
-  - place_id: 1
-  
-  - id: 2
-  - vote: 3
-  - comment: not so good
-  - user_id: User_id 2
-  - place_id: 2
-  
-  - id: 3
-  - vote: 1
-  - comment: so bad
-  - user_id: 3
-  - place_id: 2
-  
-  - id: 4
-  - vote: 5
-  - comment: Amazing
-  - user_id: User_id 5
-  - place_id: 1
-  
-  - id: 5
-  - vote: 5
-  - comment: Must do
-  - user_id: User_id 4
-  - place_id: 3
-  
-  - id: 6
-  - vote: 5
-  - comment: Stunning
-  - user_id: 1
-  - place_id: 4
+| **id** | **vote** |    **comment**   | **user_id** | **place_id** |
+|:------:|:--------:|:----------------:|:-----------:|:------------:|
+|    1   |     5    | 100% Recommended |      3      |       1      |
+|    2   |     3    | not so good      |      2      |       2      |
+|    3   |     1    | so bad           |      3      |       2      |
+|    4   |     5    | Amazing          |      5      |       1      |
+|    5   |     5    | Must do          |      4      |       3      |
+|    6   |     5    | Stunning         |      1      |       4      |
 
 ### Categories
 
-- Category 1: Nature
-- Category 2: Adventure
-- Category 3: Cultural
-- Category 4: Sport
-- Category 5: Relax
-- Category 6: Romantic
+| **Category 1** | **Category 2** | **Category 3** | **Category 4** | **Category 5** | **Category 6** |
+|:--------------:|:--------------:|:--------------:|:--------------:|:--------------:|----------------|
+|     Nature     |    Adventure   | Cultural       |      Sport     |      Relax     | Romantic       |
 
 ## AUTORES
   KAROL BRACHO, [bykarol](https://www.linkedin.com/in/karolbrachoyanez/)
