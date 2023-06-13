@@ -22,13 +22,14 @@ npm run initDB
 ```bash
 npm run dev
 ```
+- 
    - Modo normal:
 ```bash
 npm start
 ```
 
 - Ayuda adicional:
-   - Exportar la colección Postman para probar las rutas. El mismo lo consigues en el root del repositorio bajo el siguiente nombre: travelexperience.postman_collection.json
+   - Importar la colección Postman para probar las rutas. El mismo lo consigues en el root del repositorio bajo el siguiente nombre: travelexperience.postman_collection.json
 
 
 ## BASE DE DATOS (travelexperience)
@@ -43,7 +44,7 @@ Los campos `users.active`, `users.role`, `users.deleted`, `users.date`, `votes.d
 
 - **POST** - [&quot;/users/login&quot;] - Logea a un usuario retornando un token.
 - **POST** - [&quot;/users/newuser&quot;] – Crea un nuevo usuario.
-- **PATCH** - [&quot;/users/newpassword&quot;] – Crea un nuevo usuario.
+- **PATCH** - [&quot;/users/newpassword&quot;] – Crea una contraseña.
 
 ## ENDPOINTS DE LUGARES
 - **GET** - [&quot;/&quot;] – Devuelve información general de todas las entradas ordenadas de forma descendente (la más nueva arriba).
