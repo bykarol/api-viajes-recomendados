@@ -31,8 +31,8 @@ const modifyPassword = async (req, res) => {
       status: 'ok',
       message: 'password changed successfully',
     });
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    res.status(400).send(err.message);
   }
 };
 

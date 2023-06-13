@@ -26,9 +26,8 @@ const getPlacesbyCountry = async (req, res) => {
       status: 'ok',
       data: groupedbyCountry,
     });
-  } catch (error) {
-    console.log(error);
-    res.send(error);
+  } catch (err) {
+    res.send(err.message);
   }
 };
 

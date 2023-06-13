@@ -29,9 +29,9 @@ const postUser = async (req, res) => {
       mensaje: 'user created successfully',
       data: user,
     });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send(error);
+  } catch (err) {
+    
+    res.status(500).send(err.message);
   }
 };
 

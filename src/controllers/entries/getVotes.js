@@ -17,9 +17,9 @@ const getVotes = async (req, res) => {
       message: "List of places ordered by most voted",
       data: votesPlaces,
     });
-  } catch (e) {
-    console.log(e);
-    res.status(500).send('Server error');
+  } catch (err) {
+    
+    res.status(500).send(err.message);
   }
 };
 

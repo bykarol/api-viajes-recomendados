@@ -25,9 +25,9 @@ const getPlaces = async (req, res) => {
       status: 'ok',
       data: groupedbyCity,
     });
-  } catch (error) {
-    console.log(error);
-    res.send(error);
+  } catch (err) {
+    
+    res.send(err.message);
   }
 };
 
