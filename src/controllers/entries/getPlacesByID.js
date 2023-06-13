@@ -33,8 +33,6 @@ const getPlacesByID = async (req, res) => {
       [id]
     );
 
-    connect.release();
-
     res.status(200).send({
       status: 'ok',
       message: `Detail of place_id: ${id}`,
@@ -47,6 +45,8 @@ const getPlacesByID = async (req, res) => {
     });
   } catch (err) {
     res.status(500).send(err.message);
+  } finally {
+    if (connect) connect.release();
   }
 };
 

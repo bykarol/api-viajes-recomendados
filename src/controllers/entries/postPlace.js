@@ -1,8 +1,9 @@
 const getDB = require('../../db/db');
+const savePhoto = require('../../service/savePhoto');
 
 const postPlace = async (req, res) => {
+  let connect = await getDB();
   try {
-    const connect = await getDB();
     const { title, shortDescription, largeDescription, city, country } = req.body;
 
     if (!title || !shortDescription || !city || !country) {
@@ -16,7 +17,19 @@ const postPlace = async (req, res) => {
       [title, shortDescription, largeDescription, city, country, req.userInfo.id]
     );
 
-    connect.release();
+    const { insertId } = result
+
+    if (req.files && Object.keys(req.files).length > 0) {
+      for (let photosData of Object.values(req.files).slice(0, 3)) {
+        const photoName = await savePhoto(photosData);
+        await connect.query(
+          `
+            INSERT INTO photos(photo, place_id) VALUES (?, ?)
+            `,
+          [photoName, insertId]
+        );
+      }
+    }
 
     res.status(200).send({
       status: 'ok',
@@ -24,7 +37,9 @@ const postPlace = async (req, res) => {
       result: result
     });
   } catch (err) {
-    res.send(err.message);
+    res.status(500).send(err.message);
+  } finally {
+    if (connect) connect.release();
   }
 }
 

@@ -11,7 +11,6 @@ const getCategories = async (req, res) => {
       INNER JOIN places p ON p.id = pc.place_id
       ORDER BY c.name;`
     );
-    connect.release();
 
     const groupedbyCategory = _.chain(result).groupBy("category_name");
 
@@ -21,8 +20,9 @@ const getCategories = async (req, res) => {
       categories: groupedbyCategory,
     });
   } catch (err) {
-    
     res.status(500).send(err.message);
+  } finally {
+    if (connect) connect.release();
   }
 };
 

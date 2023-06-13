@@ -22,16 +22,16 @@ const postUser = async (req, res) => {
       [email, password, name]
     );
 
-    connect.release();
-
     return res.status(200).send({
       status: 'ok',
       mensaje: 'user created successfully',
       data: user,
     });
   } catch (err) {
-    
+
     res.status(500).send(err.message);
+  } finally {
+    if (connect) connect.release();
   }
 };
 

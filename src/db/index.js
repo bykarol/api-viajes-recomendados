@@ -144,6 +144,8 @@ async function createDB() {
   } catch (error) {
     console.log(error.sqlMessage);
     process.exit(1);
+  } finally {
+    if (connect) connect.release();
   }
 }
 

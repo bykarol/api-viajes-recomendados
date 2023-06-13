@@ -1,12 +1,12 @@
 const getDB = require('../../db/db');
-const savePhoto  = require('../../service/savePhoto');
+const savePhoto = require('../../service/savePhoto');
 
 const postPhoto = async (req, res) => {
 
     let connection;
 
-    try{
-        connection = await getDB();
+    try {
+        connect = await getDB();
 
         const { place_id } = req.params;
         let savedPhoto;
@@ -18,21 +18,21 @@ const postPhoto = async (req, res) => {
                 INSERT INTO photos(photo, place_id) VALUES (?, ?)
                 `,
                 [savedPhoto, place_id]
-              );
+            );
         }
         res.status(200).send({
             status: 'ok',
             data: {
-            info:req.files.data,   
-            date: new Date(),
-            photo: savedPhoto,
-            place: place_id
+                info: req.files.data,
+                date: new Date(),
+                photo: savedPhoto,
+                place: place_id
             },
         })
     } catch (err) {
         res.send(err.message)
     } finally {
-        if (connection) connection.release();
+        if (connect) connect.release();
     }
 };
 module.exports = postPhoto;

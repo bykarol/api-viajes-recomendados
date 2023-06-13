@@ -19,7 +19,6 @@ const getPlacesbyCountry = async (req, res) => {
       [country]
     );
 
-    connect.release();
     const groupedbyCountry = _.chain(experiences).groupBy("country");
 
     res.status(200).send({
@@ -28,6 +27,8 @@ const getPlacesbyCountry = async (req, res) => {
     });
   } catch (err) {
     res.send(err.message);
+  } finally {
+    if (connect) connect.release();
   }
 };
 
