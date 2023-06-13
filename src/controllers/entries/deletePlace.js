@@ -13,9 +13,9 @@ const deletePlace = async (req, res) => {
       status: 'ok',
       message: `The entry with id ${id} was successfully deleted`,
     });
-  } catch (error) {
-    console.log(error);
-    res.send(error);
+  } catch (err) {
+   
+    res.send(err.message);
   }
 };
 

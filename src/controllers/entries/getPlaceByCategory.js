@@ -21,8 +21,8 @@ const getPlacesByCategory = async (req, res) => {
       categories: groupedbyCategory,
     });
   } catch (err) {
-    console.log(err);
-    res.status(500).send('Server error');
+    
+    res.status(500).send(err.message);
   }
 };
 

@@ -30,7 +30,7 @@ const postPhoto = async (req, res) => {
             },
         })
     } catch (err) {
-        res.send(err)
+        res.send(err.message)
     } finally {
         if (connection) connection.release();
     }

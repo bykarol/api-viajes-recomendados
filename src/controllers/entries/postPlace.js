@@ -23,9 +23,8 @@ const postPlace = async (req, res) => {
       message: 'Place posted successfully.',
       result: result
     });
-  } catch (error) {
-    console.log(error);
-    res.send(error);
+  } catch (err) {
+    res.send(err.message);
   }
 }
 
