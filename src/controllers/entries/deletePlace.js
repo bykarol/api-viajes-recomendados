@@ -14,8 +14,10 @@ const deletePlace = async (req, res) => {
       message: `The entry with id ${id} was successfully deleted`,
     });
   } catch (err) {
-   
+
     res.send(err.message);
+  } finally {
+    if (connect) connect.release();
   }
 };
 

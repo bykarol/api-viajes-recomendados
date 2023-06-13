@@ -13,7 +13,7 @@ const getPlacesByCategory = async (req, res) => {
       WHERE c.name = ?`,
       [category]
     );
-    connect.release();
+
     const groupedbyCategory = _.chain(result).groupBy("category_name");
 
     res.status(200).send({
@@ -21,8 +21,10 @@ const getPlacesByCategory = async (req, res) => {
       categories: groupedbyCategory,
     });
   } catch (err) {
-    
+
     res.status(500).send(err.message);
+  } finally {
+    if (connect) connect.release();
   }
 };
 

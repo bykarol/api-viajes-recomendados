@@ -11,8 +11,6 @@ const listPlaces = async (req, res) => {
       ORDER BY p.date DESC;`
     );
 
-    connect.release();
-
     res.status(200).send({
       status: 'ok',
       message: "List of places ordered by date",
@@ -21,6 +19,8 @@ const listPlaces = async (req, res) => {
     });
   } catch (err) {
     res.status(500).send(err.message)
+  } finally {
+    if (connect) connect.release();
   }
 };
 

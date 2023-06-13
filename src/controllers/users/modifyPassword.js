@@ -26,13 +26,15 @@ const modifyPassword = async (req, res) => {
               `,
       [newPwd, new Date(), req.userInfo.id]
     );
-    connect.release();
+
     res.send({
       status: 'ok',
       message: 'password changed successfully',
     });
   } catch (err) {
     res.status(400).send(err.message);
+  } finally {
+    if (connect) connect.release();
   }
 };
 

@@ -19,7 +19,6 @@ const loginUser = async (req, res) => {
       [email, password]
     );
 
-    connect.release();
     if (user.length === 0) {
       return res.status(401).send('Incorrect email or password');
     }
@@ -40,6 +39,8 @@ const loginUser = async (req, res) => {
     });
   } catch (err) {
     res.status(400).send(err);
+  } finally {
+    if (connect) connect.release();
   }
 };
 

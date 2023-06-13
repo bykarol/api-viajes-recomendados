@@ -19,15 +19,16 @@ const getPlaces = async (req, res) => {
       [city]
     );
 
-    connect.release();
     const groupedbyCity = _.chain(experiences).groupBy("city");
     res.status(200).send({
       status: 'ok',
       data: groupedbyCity,
     });
   } catch (err) {
-    
+
     res.send(err.message);
+  } finally {
+    if (connect) connect.release();
   }
 };
 

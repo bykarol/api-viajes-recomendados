@@ -10,16 +10,16 @@ const getVotes = async (req, res) => {
       GROUP BY p.id ORDER BY SUM(v.vote) DESC;`
     );
 
-    connect.release();
-
     res.status(200).send({
       status: 'ok',
       message: "List of places ordered by most voted",
       data: votesPlaces,
     });
   } catch (err) {
-    
+
     res.status(500).send(err.message);
+  } finally {
+    if (connect) connect.release();
   }
 };
 

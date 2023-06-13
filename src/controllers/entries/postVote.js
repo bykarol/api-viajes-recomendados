@@ -8,7 +8,6 @@ const postVotes = async (req, res) => {
         const [userVote] = await connect.query(
             `INSERT INTO votes (vote, comment, user_id, place_id) VALUES (?,?,?,?)`, [vote, comment, req.userInfo.id, place_id]
         );
-        connect.release();
         res.status(200).send({
             status: "ok",
             message: "A successfully conducted vote",
@@ -19,6 +18,8 @@ const postVotes = async (req, res) => {
     } catch (err) {
 
         res.status(500).send(err.message);
+    } finally {
+        if (connect) connect.release();
     }
 
 }
