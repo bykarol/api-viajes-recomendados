@@ -2,8 +2,9 @@ const jwt = require('jsonwebtoken');
 const getDB = require('../../db/db');
 
 const loginUser = async (req, res) => {
+  let connect;
   try {
-    const connect = await getDB();
+    connect = await getDB();
     const { email, password } = req.body;
 
     if (!email || !password) {

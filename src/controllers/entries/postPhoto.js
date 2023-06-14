@@ -2,37 +2,36 @@ const getDB = require('../../db/db');
 const savePhoto = require('../../service/savePhoto');
 
 const postPhoto = async (req, res) => {
+  let connect;
 
-    let connection;
+  try {
+    connect = await getDB();
 
-    try {
-        connect = await getDB();
+    const { place_id } = req.params;
+    let savedPhoto;
 
-        const { place_id } = req.params;
-        let savedPhoto;
-
-        if (req.files && Object.keys(req.files).length > 0) {
-            savedPhoto = await savePhoto(Object.values(req.files)[0]);
-            await connection.query(
-                `
+    if (req.files && Object.keys(req.files).length > 0) {
+      savedPhoto = await savePhoto(Object.values(req.files)[0]);
+      await connect.query(
+        `
                 INSERT INTO photos(photo, place_id) VALUES (?, ?)
                 `,
-                [savedPhoto, place_id]
-            );
-        }
-        res.status(200).send({
-            status: 'ok',
-            data: {
-                info: req.files.data,
-                date: new Date(),
-                photo: savedPhoto,
-                place: place_id
-            },
-        })
-    } catch (err) {
-        res.send(err.message)
-    } finally {
-        if (connect) connect.release();
+        [savedPhoto, place_id]
+      );
     }
+    res.status(200).send({
+      status: 'ok',
+      data: {
+        info: req.files.data,
+        date: new Date(),
+        photo: savedPhoto,
+        place: place_id,
+      },
+    });
+  } catch (err) {
+    res.send(err.message);
+  } finally {
+    if (connect) connect.release();
+  }
 };
 module.exports = postPhoto;
