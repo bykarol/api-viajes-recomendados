@@ -40,10 +40,19 @@ const postPlace = async (req, res) => {
       }
     }
 
+    const [entry] = await connect.query(
+      `SELECT p.id, p.title, p.shortDescription, p.largeDescription, p.city, p.country, p.user_id, 
+      ph.id AS idPhoto, ph.date AS datePhoto, ph.photo
+      FROM places p
+      INNER JOIN photos ph ON p.id=ph.place_id
+      WHERE p.id =?`,
+      [result.insertId]
+    );
+
     res.status(200).send({
       status: 'ok',
       message: 'Place posted successfully.',
-      result: result,
+      result: entry,
     });
   } catch (err) {
     res.status(500).send(err.message);

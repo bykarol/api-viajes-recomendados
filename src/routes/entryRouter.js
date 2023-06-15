@@ -27,14 +27,14 @@ router.get('/', listPlaces);
 router.get('/places/listcategories', getCategories);
 router.get('/places/listvotes', getVotes);
 router.get('/places/:id', placeExists, getPlacesByID);
-router.get('/places/category/:category', getPlacesByCategory);
+router.get('/places/category/:id_category', getPlacesByCategory);
 router.get('/places/city/:city', getPlacesByCity);
 router.get('/places/country/:country', getPlacesbyCountry);
 router.get('/categorylist', getIdCategories);
 
 
 router.post('/places/newplace', isUser, postPlace);
-router.post('/places/newvote', isUser, postVote);
+router.post('/places/newvote/:place_id', isUser, placeExists, postVote);
 router.post('/places/addphoto/:place_id', postPhoto);
 
 router.delete(

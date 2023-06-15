@@ -1,360 +1,286 @@
 {
-	"info": {
-		"_postman_id": "6ff7a06d-1b07-4904-af0f-d234a4d396b8",
-		"name": "Proyecto Travel Experiences",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "27227055",
-		"_collection_link": "https://solar-water-698491.postman.co/workspace/My-Workspace~b4ad5c51-ef68-4aeb-8264-696a5973d269/collection/27227055-6ff7a06d-1b07-4904-af0f-d234a4d396b8?action=share&creator=27227055&source=collection_link"
-	},
-	"item": [
-		{
-			"name": "List All Places",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "List places by ID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/places/3",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"places",
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "List places by Votes",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/places/listvotes",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"places",
-						"listvotes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "List places by city",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/places/city/santo domingo",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"places",
-						"city",
-						"santo domingo"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "List places by country",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/places/country/spain",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"places",
-						"country",
-						"spain"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "List places by category",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/places/category/nature",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"places",
-						"category",
-						"nature"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "List Categories",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/places/listcategories",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"places",
-						"listcategories"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "New User",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"maria@maria.com\",\r\n    \"password\":1234,\r\n    \"name\": \"María\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:3000/users/newuser",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"users",
-						"newuser"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Login User",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"maria@maria.com\",\r\n    \"password\":4567\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:3000/users/login",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"users",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "New place",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NDIzMTUzOSwiZXhwIjoxNjg0MjM1MTM5fQ.As7m5kKfI4P_HueSWmmybiKcU8R5gy9hv02raYBnHFI",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"title\":\"Castillos de Escocia\",\r\n    \"shortDescription\":\"Visita a las tierras altas escocesas\",\r\n    \"city\":\"Edimburgo\",\r\n    \"country\":\"Escocia\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:3000/places/newplace",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"places",
-						"newplace"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post Vote",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NDA4Njg1NSwiZXhwIjoxNjg0MDkwNDU1fQ.dkBVPZAcaFS4eSX0jiTlXH_HQywznzM8-NdkwSRTqzE",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"vote\":5,\r\n    \"comment\":\"Una maravilla, lo pasamos genial\",\r\n    \"place_id\":3\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:3000/places/newvote",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"places",
-						"newvote"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post Photo",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "",
-							"type": "file",
-							"src": "/C:/Users/isabe/OneDrive/Escritorio/istockphoto-614647436-1024x1024.jpg"
-						}
-					]
-				},
-				"url": {
-					"raw": "localhost:3000/places/addphoto/14",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"places",
-						"addphoto",
-						"14"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete place",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NDE0MjcxNiwiZXhwIjoxNjg0MTQ2MzE2fQ.Ms1fDNPmmUfNZnupIVEQ2uxvK0T8CtPmSJcXShI8ZfM",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "localhost:3000/places/delete/11",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"places",
-						"delete",
-						"11"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Change password",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NDIzMDI2MCwiZXhwIjoxNjg0MjMzODYwfQ.rkkwCmZ-AHXMW9cIgRPSO0Pg5EuvDgsLdNiA0vXaMOk",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"oldPwd\":1234,\r\n    \"newPwd\":4567\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:3000/users/newpassword",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"users",
-						"newpassword"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "6ff7a06d-1b07-4904-af0f-d234a4d396b8",
+    "name": "Proyecto Travel Experiences",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "27227055",
+    "_collection_link": "https://solar-water-698491.postman.co/workspace/My-Workspace~b4ad5c51-ef68-4aeb-8264-696a5973d269/collection/27227055-6ff7a06d-1b07-4904-af0f-d234a4d396b8?action=share&creator=27227055&source=collection_link"
+  },
+  "item": [
+    {
+      "name": "List All Places",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": [""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Place by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/places/3",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["places", "3"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List places by Votes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/places/listvotes",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["places", "listvotes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List places by city",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/places/city/santo domingo",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["places", "city", "santo domingo"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List places by country",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/places/country/spain",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["places", "country", "spain"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List places by category",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/places/category/nature",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["places", "category", "nature"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Categories",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/places/listcategories",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["places", "listcategories"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\":\"maria@maria.com\",\r\n    \"password\":1234,\r\n    \"name\": \"María\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:3000/users/newuser",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["users", "newuser"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\":\"maria@maria.com\",\r\n    \"password\":4567\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:3000/users/login",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["users", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New place",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NDIzMTUzOSwiZXhwIjoxNjg0MjM1MTM5fQ.As7m5kKfI4P_HueSWmmybiKcU8R5gy9hv02raYBnHFI",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\":\"Castillos de Escocia\",\r\n    \"shortDescription\":\"Visita a las tierras altas escocesas\",\r\n    \"city\":\"Edimburgo\",\r\n    \"country\":\"Escocia\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:3000/places/newplace",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["places", "newplace"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post Vote",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NDA4Njg1NSwiZXhwIjoxNjg0MDkwNDU1fQ.dkBVPZAcaFS4eSX0jiTlXH_HQywznzM8-NdkwSRTqzE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"vote\":5,\r\n    \"comment\":\"Una maravilla, lo pasamos genial\",\r\n    \"place_id\":3\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:3000/places/newvote",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["places", "newvote"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post Photo",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "",
+              "type": "file",
+              "src": "/C:/Users/isabe/OneDrive/Escritorio/istockphoto-614647436-1024x1024.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "localhost:3000/places/addphoto/14",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["places", "addphoto", "14"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete place",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NDE0MjcxNiwiZXhwIjoxNjg0MTQ2MzE2fQ.Ms1fDNPmmUfNZnupIVEQ2uxvK0T8CtPmSJcXShI8ZfM",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "localhost:3000/places/delete/11",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["places", "delete", "11"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Change password",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NDIzMDI2MCwiZXhwIjoxNjg0MjMzODYwfQ.rkkwCmZ-AHXMW9cIgRPSO0Pg5EuvDgsLdNiA0vXaMOk",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"oldPwd\":1234,\r\n    \"newPwd\":4567\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:3000/users/newpassword",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["users", "newpassword"]
+        }
+      },
+      "response": []
+    }
+  ]
 }

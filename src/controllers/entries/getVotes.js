@@ -8,7 +8,7 @@ const getVotes = async (req, res) => {
       `SELECT sum(v.vote)/count(v.vote) as votes_average, p.title, p.shortDescription, p.country, p.date, p.id as "place_id"
       FROM places p
       LEFT JOIN votes v ON p.id = v.place_id
-      GROUP BY p.id ORDER BY SUM(v.vote) DESC;`
+      GROUP BY p.id ORDER BY votes_average DESC;`
     );
 
     res.status(200).send({
