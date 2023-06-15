@@ -9,6 +9,7 @@ const listPlaces = require('./listPlaces');
 const getPlacesByID = require('./getPlacesByID');
 const postPhoto = require('./postPhoto');
 const deletePlace = require('./deletePlace');
+const getIdCategories = require('./getIdCategories')
 
 module.exports = {
   getPlacesByCity,
@@ -22,4 +23,5 @@ module.exports = {
   getPlacesByID,
   postPhoto,
   deletePlace,
+  getIdCategories
 };

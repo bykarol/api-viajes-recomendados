@@ -17,11 +17,26 @@ const registrationSchema = Joi.object({
     .error(new Error('Name not specified or invalid'))
 });
 
+const pwdSchema = Joi.object({
+  password: Joi.string()
+  .required()
+  .min(6)
+  .max(12)
+  .error(new Error('Password not specified or invalid'))
+});
+
 const validateBody = (req, res, next) => {
+  if (req.body.password && req.body.email && req.body.name) {
   const { error } = registrationSchema.validate(req.body);
   if (error) {
     return res.status(400).json({ message: error.message });
   }
+} else if(req.body.password) {
+  const { error } = pwdSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.message });
+  }
+}
   next();
 };
 
