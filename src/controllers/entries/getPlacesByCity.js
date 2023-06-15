@@ -2,9 +2,9 @@ const getDB = require('../../db/db');
 const _ = require('lodash'); //paquete que permite agrupar elementos en un array de objetos
 
 const getPlaces = async (req, res) => {
+  let connect;
   try {
-    const connect = await getDB();
-
+    connect = await getDB();
     const { city } = req.params;
 
     if (!city) {

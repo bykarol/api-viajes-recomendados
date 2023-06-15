@@ -2,8 +2,9 @@ const getDB = require('../../db/db');
 const _ = require('lodash'); //paquete que permite agrupar elementos en un array de objetos
 
 const getCategories = async (req, res) => {
+  let connect;
   try {
-    const connect = await getDB();
+    connect = await getDB();
     const [result] = await connect.query(
       `SELECT c.name as category_name, p.title, p.shortDescription, p.country, p.id as "place_id"
       FROM categories c

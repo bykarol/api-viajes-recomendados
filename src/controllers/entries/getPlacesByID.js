@@ -1,8 +1,9 @@
 const getDB = require('../../db/db');
 
 const getPlacesByID = async (req, res) => {
+  let connect;
   try {
-    const connect = await getDB();
+    connect = await getDB();
     const { id } = req.params;
 
     const [generalInfo] = await connect.query(

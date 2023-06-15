@@ -3,8 +3,7 @@ const savePhoto = require('../../service/savePhoto');
 
 const postPhoto = async (req, res) => {
 
-    let connection;
-
+    let connect;
     try {
         connect = await getDB();
 
@@ -13,7 +12,7 @@ const postPhoto = async (req, res) => {
 
         if (req.files && Object.keys(req.files).length > 0) {
             savedPhoto = await savePhoto(Object.values(req.files)[0]);
-            await connection.query(
+            await connect.query(
                 `
                 INSERT INTO photos(photo, place_id) VALUES (?, ?)
                 `,

@@ -2,8 +2,9 @@ const getDB = require('../../db/db');
 const savePhoto = require('../../service/savePhoto');
 
 const postPlace = async (req, res) => {
-  let connect = await getDB();
+  let connect;
   try {
+    connect = await getDB();
     const { title, shortDescription, largeDescription, city, country } = req.body;
 
     if (!title || !shortDescription || !city || !country) {

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
@@ -5,7 +6,6 @@ const path = require('path');
 const  createStDir  = require('./src/service/createStDir');
 const cors = require('cors');
 
-require('dotenv').config();
 const PORT = process.env.PORT;
 
 const userRouter = require('./src/routes/userRouter');

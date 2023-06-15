@@ -1,8 +1,9 @@
 const getDB = require('../../db/db');
 
 const listPlaces = async (req, res) => {
+  let connect ;
   try {
-    const connect = await getDB();
+    connect = await getDB();
     const [listPlaces] = await connect.query(
       `SELECT p.date, p.title, p.shortDescription, p.country, sum(v.vote)/count(v.vote) as votes_average, p.id as "place_id"
       FROM places p

@@ -13,6 +13,7 @@ const {
   listPlaces,
   postPhoto,
   deletePlace,
+  getCategoriesWithId
 } = require('../controllers/entries');
 
 //middlewares
@@ -29,6 +30,7 @@ router.get('/places/:id', placeExists, getPlacesByID);
 router.get('/places/category/:category', getPlacesByCategory);
 router.get('/places/city/:city', getPlacesByCity);
 router.get('/places/country/:country', getPlacesbyCountry);
+router.get('/categories', getCategoriesWithId);
 
 router.post('/places/newplace', isUser, postPlace);
 router.post('/places/newvote', isUser, postVote);

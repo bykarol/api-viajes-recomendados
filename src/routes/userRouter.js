@@ -11,6 +11,6 @@ const isUser = require('../middlewares/isUser');
 //users endpoints
 router.post('/users/login', loginUser);
 router.post('/users/newuser', validateBody, postUser);
-router.patch('/users/newpassword', isUser, modifyPassword);
+router.patch('/users/newpassword', isUser, validateBody, modifyPassword);
 
 module.exports = router;

@@ -3,8 +3,9 @@ const _ = require('lodash'); //paquete que permite agrupar elementos en un array
 
 const getPlacesByCategory = async (req, res) => {
   const category = req.params.category;
+  let connect;
   try {
-    const connect = await getDB();
+    connect = await getDB();
     const [result] = await connect.query(
       `SELECT p.*, c.name as category_name
       FROM categories c
