@@ -1,9 +1,10 @@
 const getDB = require('../../db/db');
 
 const postUser = async (req, res) => {
+  let connect;
   try {
     const { email, password, name } = req.body;
-    const connect = await getDB();
+    connect = await getDB();
 
     const [userExist] = await connect.query(
       `SELECT id, date FROM users WHERE email=?`,
@@ -28,7 +29,6 @@ const postUser = async (req, res) => {
       data: user,
     });
   } catch (err) {
-
     res.status(500).send(err.message);
   } finally {
     if (connect) connect.release();

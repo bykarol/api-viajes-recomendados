@@ -1,8 +1,9 @@
 const getDB = require('../../db/db');
 
 const deletePlace = async (req, res) => {
+  let connect;
   try {
-    const connect = await getDB();
+    connect = await getDB();
     const { id } = req.params;
 
     await connect.query(`DELETE FROM votes WHERE place_id=?`, [id]);
@@ -14,7 +15,6 @@ const deletePlace = async (req, res) => {
       message: `The entry with id ${id} was successfully deleted`,
     });
   } catch (err) {
-
     res.send(err.message);
   } finally {
     if (connect) connect.release();

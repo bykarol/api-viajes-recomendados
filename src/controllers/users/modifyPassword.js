@@ -1,8 +1,9 @@
 const getDB = require('../../db/db');
 
 const modifyPassword = async (req, res) => {
+  let connect;
   try {
-    const connect = await getDB();
+    connect = await getDB();
     const { oldPwd, newPwd } = req.body;
 
     const [user] = await connect.query(
