@@ -1,11 +1,9 @@
 {
   "info": {
-    "_postman_id": "6ff7a06d-1b07-4904-af0f-d234a4d396b8",
+    "_postman_id": "8c0d9fa2-ab94-4915-b81f-892d416f6926",
     "name": "Proyecto Travel Experiences",
     "description": "Colección que reune todos los endpoints de nuestra API Travel Experiences. Los usaremos para crear el frontend de nuestro proyecto.",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "27227055",
-    "_collection_link": "https://solar-water-698491.postman.co/workspace/My-Workspace~b4ad5c51-ef68-4aeb-8264-696a5973d269/collection/27227055-6ff7a06d-1b07-4904-af0f-d234a4d396b8?action=share&creator=27227055&source=collection_link"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
@@ -125,26 +123,26 @@
       "response": []
     },
     {
-      "name": "List of categories with their places",
+      "name": "List places by categories",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "localhost:3000/places/listcategories",
+          "raw": "localhost:3000/places/placesbycategories",
           "host": [
             "localhost"
           ],
           "port": "3000",
           "path": [
             "places",
-            "listcategories"
+            "placesbycategories"
           ]
         }
       },
       "response": []
     },
     {
-      "name": "List of categories with their ID",
+      "name": "List all categories",
       "request": {
         "method": "GET",
         "header": [],
