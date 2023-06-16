@@ -7,13 +7,13 @@ const {
   postPlace,
   getPlacesbyCountry,
   postVote,
-  getCategories,
+  getPlacesByCategories,
   getPlacesByCategory,
   getPlacesByID,
   listPlaces,
   postPhoto,
   deletePlace,
-  getIdCategories
+  getCategories
 } = require('../controllers/entries');
 
 //middlewares
@@ -24,18 +24,18 @@ const isMyEntry = require('../middlewares/isMyEntry');
 const router = express.Router();
 //entries endpoints
 router.get('/', listPlaces);
-router.get('/places/listcategories', getCategories);
+router.get('/places/placesbycategories', getPlacesByCategories);
 router.get('/places/listvotes', getVotes);
 router.get('/places/:id', placeExists, getPlacesByID);
-router.get('/places/category/:id_category', getPlacesByCategory);
+router.get('/places/category/:id', getPlacesByCategory);
 router.get('/places/city/:city', getPlacesByCity);
 router.get('/places/country/:country', getPlacesbyCountry);
-router.get('/categorylist', getIdCategories);
+router.get('/categorylist', getCategories);//getCategories
 
 
 router.post('/places/newplace', isUser, postPlace);
-router.post('/places/newvote/:place_id', placeExists, isUser, postVote);
-router.post('/places/addphoto/:place_id', isUser, placeExists, postPhoto);
+router.post('/places/newvote/:id', placeExists, isUser, postVote);
+router.post('/places/addphoto/:id', isUser, placeExists, postPhoto);
 
 router.delete(
   '/places/delete/:id',

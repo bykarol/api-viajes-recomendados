@@ -2,21 +2,26 @@
   "info": {
     "_postman_id": "6ff7a06d-1b07-4904-af0f-d234a4d396b8",
     "name": "Proyecto Travel Experiences",
+    "description": "Colección que reune todos los endpoints de nuestra API Travel Experiences. Los usaremos para crear el frontend de nuestro proyecto.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "27227055",
     "_collection_link": "https://solar-water-698491.postman.co/workspace/My-Workspace~b4ad5c51-ef68-4aeb-8264-696a5973d269/collection/27227055-6ff7a06d-1b07-4904-af0f-d234a4d396b8?action=share&creator=27227055&source=collection_link"
   },
   "item": [
     {
-      "name": "List All Places",
+      "name": "List all places",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
           "raw": "localhost:3000/",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": [""]
+          "path": [
+            ""
+          ]
         }
       },
       "response": []
@@ -27,24 +32,34 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "localhost:3000/places/3",
-          "host": ["localhost"],
+          "raw": "localhost:3000/places/5",
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": ["places", "3"]
+          "path": [
+            "places",
+            "5"
+          ]
         }
       },
       "response": []
     },
     {
-      "name": "List places by Votes",
+      "name": "List places by votes",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
           "raw": "localhost:3000/places/listvotes",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": ["places", "listvotes"]
+          "path": [
+            "places",
+            "listvotes"
+          ]
         }
       },
       "response": []
@@ -56,9 +71,15 @@
         "header": [],
         "url": {
           "raw": "localhost:3000/places/city/santo domingo",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": ["places", "city", "santo domingo"]
+          "path": [
+            "places",
+            "city",
+            "santo domingo"
+          ]
         }
       },
       "response": []
@@ -70,49 +91,84 @@
         "header": [],
         "url": {
           "raw": "localhost:3000/places/country/spain",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": ["places", "country", "spain"]
+          "path": [
+            "places",
+            "country",
+            "spain"
+          ]
         }
       },
       "response": []
     },
     {
-      "name": "List places by category",
+      "name": "List places by category id",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "localhost:3000/places/category/nature",
-          "host": ["localhost"],
+          "raw": "localhost:3000/places/category/3",
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": ["places", "category", "nature"]
+          "path": [
+            "places",
+            "category",
+            "3"
+          ]
         }
       },
       "response": []
     },
     {
-      "name": "List Categories",
+      "name": "List of categories with their places",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
           "raw": "localhost:3000/places/listcategories",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": ["places", "listcategories"]
+          "path": [
+            "places",
+            "listcategories"
+          ]
         }
       },
       "response": []
     },
     {
-      "name": "New User",
+      "name": "List of categories with their ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/categorylist",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "categorylist"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New user",
       "request": {
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"email\":\"maria@maria.com\",\r\n    \"password\":1234,\r\n    \"name\": \"María\"\r\n}",
+          "raw": "{\r\n    \"email\":\"mkk@maria.com\",\r\n    \"password\":\"123456\",\r\n    \"name\": \"maika\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -121,21 +177,26 @@
         },
         "url": {
           "raw": "localhost:3000/users/newuser",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": ["users", "newuser"]
+          "path": [
+            "users",
+            "newuser"
+          ]
         }
       },
       "response": []
     },
     {
-      "name": "Login User",
+      "name": "Login user",
       "request": {
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"email\":\"maria@maria.com\",\r\n    \"password\":4567\r\n}",
+          "raw": "{\r\n    \"email\":\"mkk@maria.com\",\r\n    \"password\":\"123456\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -144,9 +205,14 @@
         },
         "url": {
           "raw": "localhost:3000/users/login",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": ["users", "login"]
+          "path": [
+            "users",
+            "login"
+          ]
         }
       },
       "response": []
@@ -158,42 +224,68 @@
         "header": [
           {
             "key": "authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NDIzMTUzOSwiZXhwIjoxNjg0MjM1MTM5fQ.As7m5kKfI4P_HueSWmmybiKcU8R5gy9hv02raYBnHFI",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsIm5hbWUiOiJtYWlrYSIsImF2YXRhciI6bnVsbCwiaWF0IjoxNjg2OTMzMDAzLCJleHAiOjE2ODY5MzY2MDN9.jcdAoc7etMQpu0UgFJkm4grgjgU8E2DSci64cW29Oek",
             "type": "text"
           }
         ],
         "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"title\":\"Castillos de Escocia\",\r\n    \"shortDescription\":\"Visita a las tierras altas escocesas\",\r\n    \"city\":\"Edimburgo\",\r\n    \"country\":\"Escocia\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "foto1",
+              "type": "file",
+              "src": "/C:/Users/isabe/OneDrive/Escritorio/sapavietnamjpg.jpg"
+            },
+            {
+              "key": "title",
+              "value": "Viajamos a Vietnam",
+              "type": "text"
+            },
+            {
+              "key": "shortDescription",
+              "value": "La experiencia de compartir casa con gente local",
+              "type": "text"
+            },
+            {
+              "key": "city",
+              "value": "Sapa",
+              "type": "text"
+            },
+            {
+              "key": "country",
+              "value": "Vietnam",
+              "type": "text"
             }
-          }
+          ]
         },
         "url": {
           "raw": "localhost:3000/places/newplace",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": ["places", "newplace"]
+          "path": [
+            "places",
+            "newplace"
+          ]
         }
       },
       "response": []
     },
     {
-      "name": "Post Vote",
+      "name": "Post vote",
       "request": {
         "method": "POST",
         "header": [
           {
             "key": "authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NDA4Njg1NSwiZXhwIjoxNjg0MDkwNDU1fQ.dkBVPZAcaFS4eSX0jiTlXH_HQywznzM8-NdkwSRTqzE",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsIm5hbWUiOiJtYWlrYSIsImF2YXRhciI6bnVsbCwiaWF0IjoxNjg2OTMxOTUzLCJleHAiOjE2ODY5MzU1NTN9.UlblK76qHzoJQXqHVy4gdUqWBsNfQiZXrUqLo3jB9Mc",
             "type": "text"
           }
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"vote\":5,\r\n    \"comment\":\"Una maravilla, lo pasamos genial\",\r\n    \"place_id\":3\r\n}",
+          "raw": "{\r\n    \"vote\":2,\r\n    \"comment\":\"No vimos los tiburones\"\r\n    \r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -201,34 +293,52 @@
           }
         },
         "url": {
-          "raw": "localhost:3000/places/newvote",
-          "host": ["localhost"],
+          "raw": "localhost:3000/places/newvote/1",
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": ["places", "newvote"]
+          "path": [
+            "places",
+            "newvote",
+            "1"
+          ]
         }
       },
       "response": []
     },
     {
-      "name": "Post Photo",
+      "name": "Post photo",
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsIm5hbWUiOiJtYWlrYSIsImF2YXRhciI6bnVsbCwiaWF0IjoxNjg2OTMzMDAzLCJleHAiOjE2ODY5MzY2MDN9.jcdAoc7etMQpu0UgFJkm4grgjgU8E2DSci64cW29Oek",
+            "type": "text"
+          }
+        ],
         "body": {
           "mode": "formdata",
           "formdata": [
             {
-              "key": "",
+              "key": "bahia halong",
               "type": "file",
-              "src": "/C:/Users/isabe/OneDrive/Escritorio/istockphoto-614647436-1024x1024.jpg"
+              "src": "/C:/Users/isabe/OneDrive/Escritorio/halongbay.jpg"
             }
           ]
         },
         "url": {
-          "raw": "localhost:3000/places/addphoto/14",
-          "host": ["localhost"],
+          "raw": "localhost:3000/places/addphoto/5",
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": ["places", "addphoto", "14"]
+          "path": [
+            "places",
+            "addphoto",
+            "5"
+          ]
         }
       },
       "response": []
@@ -240,33 +350,39 @@
         "header": [
           {
             "key": "authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NDE0MjcxNiwiZXhwIjoxNjg0MTQ2MzE2fQ.Ms1fDNPmmUfNZnupIVEQ2uxvK0T8CtPmSJcXShI8ZfM",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4Njg0ODY2OCwiZXhwIjoxNjg2ODUyMjY4fQ.I1WIIcd7hChznn5XNQlLQC4A54XX_0VOCGSzUn9tACI",
             "type": "text"
           }
         ],
         "url": {
-          "raw": "localhost:3000/places/delete/11",
-          "host": ["localhost"],
+          "raw": "localhost:3000/places/delete/1",
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": ["places", "delete", "11"]
+          "path": [
+            "places",
+            "delete",
+            "1"
+          ]
         }
       },
       "response": []
     },
     {
-      "name": "Change password",
+      "name": "Modify password",
       "request": {
         "method": "PATCH",
         "header": [
           {
             "key": "authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NDIzMDI2MCwiZXhwIjoxNjg0MjMzODYwfQ.rkkwCmZ-AHXMW9cIgRPSO0Pg5EuvDgsLdNiA0vXaMOk",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nywicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NjkxNTQ1NiwiZXhwIjoxNjg2OTE5MDU2fQ.0eqB_pRiA2sF5oRbkUKgrn7MfNyi90EvFsclB3Spg8c",
             "type": "text"
           }
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"oldPwd\":1234,\r\n    \"newPwd\":4567\r\n}",
+          "raw": "{\r\n    \"oldPwd\":12346,\r\n    \"newPwd\":456789\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -275,9 +391,14 @@
         },
         "url": {
           "raw": "localhost:3000/users/newpassword",
-          "host": ["localhost"],
+          "host": [
+            "localhost"
+          ],
           "port": "3000",
-          "path": ["users", "newpassword"]
+          "path": [
+            "users",
+            "newpassword"
+          ]
         }
       },
       "response": []

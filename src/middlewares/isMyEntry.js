@@ -1,8 +1,9 @@
 const getDB = require('../db/db');
 
 const isMyEntry = async (req, res, next) => {
+  let connect;
   try {
-    const connect = await getDB();
+    connect = await getDB();
 
     const { id } = req.params;
 
@@ -15,8 +16,6 @@ const isMyEntry = async (req, res, next) => {
       [id]
     );
 
-    connect.release();
-
     if (req.userInfo.id !== entry.user_id && req.userInfo.role !== 'admin') {
       res.status(401).send('You do not have permission');
     }
@@ -24,6 +23,8 @@ const isMyEntry = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     res.send(error);
+  } finally {
+    if (connect) connect.release();
   }
 };
 

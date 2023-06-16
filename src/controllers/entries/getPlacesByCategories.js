@@ -1,29 +1,23 @@
 const getDB = require('../../db/db');
 const _ = require('lodash'); //paquete que permite agrupar elementos en un array de objetos
 
-const getPlacesByCategory = async (req, res) => {
+const getPlacesByCategories = async (req, res) => {
   let connect;
-  const id = req.params.id;
   try {
     connect = await getDB();
     const [result] = await connect.query(
-      `SELECT c.id as category_id, c.name as category_name, p.*
+      `SELECT c.id as category_id, c.name as category_name, p.title, p.shortDescription, p.country, p.id as "place_id"
       FROM categories c
       INNER JOIN place_category pc ON c.id = pc.category_id
       INNER JOIN places p ON p.id = pc.place_id
-      WHERE c.id = ?`,
-      [id]
+      ORDER BY c.name;`
     );
-
-    if (result.length === 0) {
-      return res.status(404).send("The category doesn't exists");
-    }
 
     const groupedbyCategory = _.chain(result).groupBy('category_name');
 
     res.status(200).send({
       status: 'ok',
-      message: "Places listed by category_id",
+      message: 'List of places grouped by categories',
       data: groupedbyCategory,
     });
   } catch (err) {
@@ -33,4 +27,4 @@ const getPlacesByCategory = async (req, res) => {
   }
 };
 
-module.exports = getPlacesByCategory;
+module.exports = getPlacesByCategories;

@@ -7,9 +7,6 @@ const placeExists = async (req, res, next) => {
     connection = await getDB();
 
     const { id } = req.params;
-    let identification;
-    if (req.params.id) identification = req.params.id;
-    if (req.params.place_id) identification = req.params.place_id;
 
     const [place] = await connection.query(
       `
@@ -17,7 +14,7 @@ const placeExists = async (req, res, next) => {
           FROM places
           WHERE id=?
         `,
-      [identification]
+      [id]
     );
 
     if (place.length === 0) {

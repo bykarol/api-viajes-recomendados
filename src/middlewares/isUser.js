@@ -2,14 +2,15 @@ const jwt = require('jsonwebtoken');
 const getDB = require('../db/db');
 
 const isUser = async (req, res, next) => {
+  let connect;
+  let tokenInfo;
   try {
-    const connect = await getDB();
+    connect = await getDB();
 
     const authorization = req.headers['authorization'];
 
     if (!authorization) return res.status(401).send('Not authorized');
 
-    let tokenInfo;
     try {
       tokenInfo = jwt.verify(authorization, process.env.SECRET_TOKEN);
     } catch (error) {
@@ -36,6 +37,8 @@ const isUser = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+  } finally {
+    if (connect) connect.release();
   }
 };
 
