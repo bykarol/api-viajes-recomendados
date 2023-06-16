@@ -34,8 +34,8 @@ router.get('/categorylist', getIdCategories);
 
 
 router.post('/places/newplace', isUser, postPlace);
-router.post('/places/newvote/:place_id', isUser, placeExists, postVote);
-router.post('/places/addphoto/:place_id', postPhoto);
+router.post('/places/newvote/:place_id', placeExists, isUser, postVote);
+router.post('/places/addphoto/:place_id', isUser, placeExists, postPhoto);
 
 router.delete(
   '/places/delete/:id',

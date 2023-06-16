@@ -21,6 +21,7 @@ const postPhoto = async (req, res) => {
     }
     res.status(200).send({
       status: 'ok',
+      message: "Photo posted succesfully",
       data: {
         info: req.files.data,
         date: new Date(),
@@ -29,7 +30,7 @@ const postPhoto = async (req, res) => {
       },
     });
   } catch (err) {
-    res.send(err.message);
+    res.status(500).send(err.message);
   } finally {
     if (connect) connect.release();
   }

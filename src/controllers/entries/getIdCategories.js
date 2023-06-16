@@ -18,7 +18,7 @@ const getIdCategories = async (req, res) => {
     res.status(200).send({
       status: 'ok',
       message: "List of categories ordered by ID",
-      categories: categories,
+      data: categories,
     });
   } catch (err) {
     res.status(500).send(err.message);

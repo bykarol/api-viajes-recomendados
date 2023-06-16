@@ -18,9 +18,17 @@ const postUser = async (req, res) => {
       });
     }
 
-    const [user] = await connect.query(
+    const [result] = await connect.query(
       `INSERT INTO users (email, password, name) VALUES (?,SHA2(?,512),?)`,
       [email, password, name]
+    );
+
+
+    const [user] = await connect.query(
+      `SELECT u.id, u.email, u.name
+      FROM users u
+      WHERE u.id =?`,
+      [result.insertId]
     );
 
     return res.status(200).send({

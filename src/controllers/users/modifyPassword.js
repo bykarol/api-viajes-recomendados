@@ -14,7 +14,7 @@ const modifyPassword = async (req, res) => {
               `,
       [req.userInfo.id, oldPwd]
     );
-
+    console.log(user.length)
     if (user.length === 0) {
       return res.status(401).send('The old password is wrong');
     }
@@ -31,6 +31,10 @@ const modifyPassword = async (req, res) => {
     res.send({
       status: 'ok',
       message: 'password changed successfully',
+      data: {
+        id: req.userInfo.id,
+        name: req.userInfo.name
+      }
     });
   } catch (err) {
     res.status(400).send(err.message);

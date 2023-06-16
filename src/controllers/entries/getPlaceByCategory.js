@@ -22,7 +22,8 @@ const getPlacesByCategory = async (req, res) => {
 
     res.status(200).send({
       status: 'ok',
-      categories: groupedbyCategory,
+      message: "Places listed by category_id",
+      data: groupedbyCategory,
     });
   } catch (err) {
     res.status(500).send(err.message);

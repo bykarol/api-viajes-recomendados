@@ -26,10 +26,10 @@ async function createDB() {
           password VARCHAR(512) NOT NULL,
           name VARCHAR(100),
           avatar VARCHAR(100),
-          active BOOLEAN DEFAULT false,
+          active TINYINT DEFAULT 1,
           role ENUM("admin", "normal") DEFAULT "normal" NOT NULL,
           regCode CHAR(36),
-          deleted BOOLEAN DEFAULT false,
+          deleted TINYINT DEFAULT 0,
           lastAuthUpdate DATETIME,
         recoverCode CHAR(36),
           date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -152,9 +152,10 @@ async function createDB() {
     // `
     // );
 
-    // console.log('Database and tables created succesfully');
     // process.exit(0);
     await autoInsert();
+    console.log('Database and tables created succesfully');
+    process.exit(0);
   } catch (error) {
     console.log(error.sqlMessage);
     process.exit(1);

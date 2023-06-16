@@ -12,6 +12,10 @@ const postPlace = async (req, res) => {
       return res.status(400).send('Fill the required fields.');
     }
 
+    if (!req.files) {
+      return res.status(400).send('You must add at least one photo.');
+    }
+
     const [result] = await connect.query(
       `
       INSERT INTO places (title, shortDescription, largeDescription, city, country, user_id) values
@@ -52,7 +56,7 @@ const postPlace = async (req, res) => {
     res.status(200).send({
       status: 'ok',
       message: 'Place posted successfully.',
-      result: entry,
+      data: entry
     });
   } catch (err) {
     res.status(500).send(err.message);

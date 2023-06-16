@@ -45,7 +45,7 @@ const postVotes = async (req, res) => {
     res.status(200).send({
       status: 'ok',
       message: 'A successfully conducted vote',
-      result: { votes_average: average[0].votes_average },
+      data: { votes_average: average[0].votes_average },
     });
   } catch (err) {
     res.status(500).send(err.message);

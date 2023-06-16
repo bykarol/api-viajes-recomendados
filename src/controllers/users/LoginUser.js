@@ -13,7 +13,7 @@ const loginUser = async (req, res) => {
 
     const [user] = await connect.query(
       `
-      SELECT id, role, active
+      SELECT id, name, avatar, role, active
       FROM users
       WHERE email = ? AND password = SHA2(?,512)
       `,
@@ -27,6 +27,8 @@ const loginUser = async (req, res) => {
     const info = {
       id: user[0].id,
       role: user[0].role,
+      name: user[0].name,
+      avatar: user[0].avatar
     };
 
     const token = jwt.sign(info, process.env.SECRET_TOKEN, { expiresIn: '1h' });
@@ -34,8 +36,9 @@ const loginUser = async (req, res) => {
     res.status(200).send({
       status: 'ok',
       message: 'Login',
+      token: token,
       data: {
-        token,
+        info
       },
     });
   } catch (err) {
