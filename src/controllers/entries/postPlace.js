@@ -5,7 +5,7 @@ const postPlace = async (req, res) => {
   let connect;
   try {
     connect = await getDB();
-    const { title, shortDescription, largeDescription, city, country } =
+    const { title, shortDescription, largeDescription, city, country, categories } =
       req.body;
 
     if (!title || !shortDescription || !city || !country) {
@@ -14,6 +14,10 @@ const postPlace = async (req, res) => {
 
     if (!req.files) {
       return res.status(400).send('You must add at least one photo.');
+    }
+
+    if (!categories) {
+      return res.status(400).send('You must select at least one category.');
     }
 
     const [result] = await connect.query(
@@ -32,6 +36,7 @@ const postPlace = async (req, res) => {
 
     const { insertId } = result;
 
+    //adding photos
     if (req.files && Object.keys(req.files).length > 0) {
       for (let photosData of Object.values(req.files).slice(0, 3)) {
         const photoName = await savePhoto(photosData);
@@ -44,19 +49,43 @@ const postPlace = async (req, res) => {
       }
     }
 
+    //adding categories
+    for (let category of categories) {
+      await connect.query(
+        `
+            INSERT INTO place_category (place_id, category_id) VALUES (?, ?)
+            `,
+        [insertId, category]
+      );
+    }
+
     const [entry] = await connect.query(
-      `SELECT p.id, p.title, p.shortDescription, p.largeDescription, p.city, p.country, p.user_id, 
-      ph.id AS idPhoto, ph.date AS datePhoto, ph.photo
+      `SELECT p.id AS place_id, p.title, p.shortDescription, p.largeDescription, p.city, p.country, p.user_id, 
+      ph.id AS photo_id, ph.date AS photo_date, ph.photo AS photo_file
       FROM places p
       INNER JOIN photos ph ON p.id=ph.place_id
       WHERE p.id =?`,
       [result.insertId]
     );
+    let categoriesNames = [];
+    for (let category_id of categories) {
+      const [category_name] = await connect.query(
+        `SELECT c.name AS category, c.id AS category_id
+        FROM categories c
+        WHERE c.id=?
+            `,
+        [category_id]
+      );
+      categoriesNames.push(category_name[0])
+    }
 
     res.status(200).send({
       status: 'ok',
       message: 'Place posted successfully.',
-      data: entry
+      data: {
+        entry,
+        categoriesNames
+      }
     });
   } catch (err) {
     res.status(500).send(err.message);
