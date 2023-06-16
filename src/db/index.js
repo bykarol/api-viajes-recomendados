@@ -1,3 +1,4 @@
+const autoInsert = require('../service/autoInsert')
 /**
  *  Este archivo inicializa una base de datos
  * la base de datos tiene 5 usuarios creados
@@ -96,63 +97,64 @@ async function createDB() {
     `
     );
     //poblar data
-    await connect.query(
-      `
-      INSERT INTO users (email, password) values
-      ("ilethem0@google.com.au","993870144"),
-      ("kmungan1@howstuffworks.com","497494899"),
-      ("ydibbert2@businesswire.com","776631050"),
-      ("tmcgorley3@studiopress.com","921948685"),
-      ("eimbrey4@cpanel.net","304168000");
-      `
-    );
-    await connect.query(
-      `
-      INSERT INTO places (title, shortDescription, city, country, user_id) values
-      ("Nadando con los tiburones","un día de submarinismo con los tiburones blancos", "Ningaloo", "Australia", 1),
-      ("Avistamiento de ballenas","Ven a ver a las ballenas jorobadas", "Santo Domingo", "Dominican Republic", 1),
-      ("El Salto Ángel","Ven a conocer el salto de agua más alto del mundo", "Canaima", "Venezuela", 2),
-      ("Mercado de San Miguel","Mercado emblemático para los amantes de la buena gastronomía", "Madrid", "Spain", 5);
-      `
-    );
-    await connect.query(
-      `
-      INSERT INTO votes (vote, comment, user_id, place_id) values
-      (5,"100% Recommended", 3, 1),
-      (3,"not so good", 2, 2),
-      (1,"so bad", 3, 2),
-      (5,"Amazing", 5, 1),
-      (5,"Must do", 4, 3),
-      (5,"Stunning", 1, 4);
-      `
-    );
-    await connect.query(
-      `
-      INSERT INTO categories (name) values
-      ("Nature"),
-      ("Adventure"),
-      ("Cultural"),
-      ("Sport"),
-      ("Relax"),
-      ("Romantic");        
-      `
-    );
-    await connect.query(
-      `
-      INSERT INTO place_category (place_id, category_id) values 
-      (1, 1),
-      (1, 2),
-      (2, 1),
-      (2, 2),
-      (3, 3),
-      (3, 5),
-      (3, 6),
-      (4, 4);      
-    `
-    );
+    // await connect.query(
+    //   `
+    //   INSERT INTO users (email, password) values
+    //   ("ilethem0@google.com.au","993870144"),
+    //   ("kmungan1@howstuffworks.com","497494899"),
+    //   ("ydibbert2@businesswire.com","776631050"),
+    //   ("tmcgorley3@studiopress.com","921948685"),
+    //   ("eimbrey4@cpanel.net","304168000");
+    //   `
+    // );
+    // await connect.query(
+    //   `
+    //   INSERT INTO places (title, shortDescription, city, country, user_id) values
+    //   ("Nadando con los tiburones","un día de submarinismo con los tiburones blancos", "Ningaloo", "Australia", 1),
+    //   ("Avistamiento de ballenas","Ven a ver a las ballenas jorobadas", "Santo Domingo", "Dominican Republic", 1),
+    //   ("El Salto Ángel","Ven a conocer el salto de agua más alto del mundo", "Canaima", "Venezuela", 2),
+    //   ("Mercado de San Miguel","Mercado emblemático para los amantes de la buena gastronomía", "Madrid", "Spain", 5);
+    //   `
+    // );
+    // await connect.query(
+    //   `
+    //   INSERT INTO votes (vote, comment, user_id, place_id) values
+    //   (5,"100% Recommended", 3, 1),
+    //   (3,"not so good", 2, 2),
+    //   (1,"so bad", 3, 2),
+    //   (5,"Amazing", 5, 1),
+    //   (5,"Must do", 4, 3),
+    //   (5,"Stunning", 1, 4);
+    //   `
+    // );
+    // await connect.query(
+    //   `
+    //   INSERT INTO categories (name) values
+    //   ("Nature"),
+    //   ("Adventure"),
+    //   ("Cultural"),
+    //   ("Sport"),
+    //   ("Relax"),
+    //   ("Romantic");        
+    //   `
+    // );
+    // await connect.query(
+    //   `
+    //   INSERT INTO place_category (place_id, category_id) values 
+    //   (1, 1),
+    //   (1, 2),
+    //   (2, 1),
+    //   (2, 2),
+    //   (3, 3),
+    //   (3, 5),
+    //   (3, 6),
+    //   (4, 4);      
+    // `
+    // );
 
-    console.log('Database and tables created succesfully');
-    process.exit(0);
+    // console.log('Database and tables created succesfully');
+    // process.exit(0);
+    await autoInsert();
   } catch (error) {
     console.log(error.sqlMessage);
     process.exit(1);
