@@ -1,9 +1,5 @@
 const getDB = require('../db/db');
-const places = require('../../dataBaseData/places.json');
-const votes = require('../../dataBaseData/votes.json');
-const users = require('../../dataBaseData/users.json');
-const categories = require('../../dataBaseData/categories.json');
-const place_category = require('../../dataBaseData/place_category.json');
+const {categories, placeCategories, places, users, votes} = require('../db/data')
 
 const autoInsert = async () => {
   let connect;
@@ -39,7 +35,7 @@ const autoInsert = async () => {
       );
     }
 
-    for (const object of place_category) {
+    for (const object of placeCategories) {
       await connect.query(
         'INSERT INTO place_category (place_id, category_id) VALUES (?, ?)',
         [object.place_id, object.category_id]
