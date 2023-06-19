@@ -20,25 +20,30 @@ const {
 const isUser = require('../middlewares/isUser');
 const placeExists = require('../middlewares/placeExists');
 const isMyEntry = require('../middlewares/isMyEntry');
+const {validateParams} = require('../middlewares/isValid');
+const cityExists = require('../middlewares/cityExists');
+const countryExists = require('../middlewares/countryExist');
+
 
 const router = express.Router();
 //entries endpoints
 router.get('/', listPlaces);
 router.get('/places/placesbycategories', getPlacesByCategories);
 router.get('/places/listvotes', getVotes);
-router.get('/places/:id', placeExists, getPlacesByID);
-router.get('/places/category/:id', getPlacesByCategory);
-router.get('/places/city/:city', getPlacesByCity);
-router.get('/places/country/:country', getPlacesbyCountry);
+router.get('/places/:id',validateParams, placeExists, getPlacesByID);
+router.get('/places/category/:id',validateParams, getPlacesByCategory);
+router.get('/places/city/:city',validateParams, cityExists, getPlacesByCity);
+router.get('/places/country/:country',validateParams, countryExists, getPlacesbyCountry);
 router.get('/categorylist', getCategories);//getCategories
 
 
-router.post('/places/newplace', isUser, postPlace);
-router.post('/places/newvote/:id', placeExists, isUser, postVote);
-router.post('/places/addphoto/:id', isUser, placeExists, postPhoto);
+router.post('/places/newplace',validateParams, isUser, postPlace);
+router.post('/places/newvote/:id',validateParams, placeExists, isUser, postVote);
+router.post('/places/addphoto/:id',validateParams, isUser, placeExists, postPhoto);
 
 router.delete(
   '/places/delete/:id',
+  validateParams,
   isUser,
   placeExists,
   isMyEntry,
