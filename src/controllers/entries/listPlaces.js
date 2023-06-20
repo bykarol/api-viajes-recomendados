@@ -5,7 +5,7 @@ const listPlaces = async (req, res) => {
   try {
     connect = await getDB();
     const [listPlaces] = await connect.query(
-      `SELECT p.date, p.title, p.shortDescription, p.country, sum(v.vote)/count(v.vote) as votes_average, p.id as "place_id"
+      `SELECT p.date, p.title, p.shortDescription, p.city, p.country, sum(v.vote)/count(v.vote) as votes_average, p.id as "place_id"
       FROM places p
       LEFT JOIN votes v ON p.id=v.place_id
       GROUP BY p.id
@@ -21,8 +21,8 @@ const listPlaces = async (req, res) => {
   } catch (err) {
     res.status(500).send({
       status: 'error',
-      message: err.message
-    })
+      message: err.message,
+    });
   } finally {
     if (connect) connect.release();
   }
