@@ -3,7 +3,7 @@ const autoInsert = require('../service/autoInsert')
  *  Este archivo inicializa una base de datos
  * la base de datos tiene 5 usuarios creados
  * 4 entradas creadas
- * 5 categorías
+ * 6 categorías
  * algunas votaciones
  */
 const mysql = require('mysql2/promise');

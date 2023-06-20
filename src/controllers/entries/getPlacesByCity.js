@@ -23,11 +23,14 @@ const getPlaces = async (req, res) => {
     const groupedbyCity = _.chain(experiences).groupBy('city');
     res.status(200).send({
       status: 'ok',
-      message: "List of places by city",
+      message: `List of places by city: ${city}`,
       data: groupedbyCity,
     });
   } catch (err) {
-    res.send(err.message);
+    res.status(err.httpStatus).send({
+      status: 'error',
+      message: err.message
+    })
   } finally {
     if (connect) connect.release();
   }

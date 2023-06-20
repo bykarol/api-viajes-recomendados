@@ -16,18 +16,24 @@ const getPlacesByCategory = async (req, res) => {
     );
 
     if (result.length === 0) {
-      return res.status(404).send("The category doesn't exists");
+      return res.status(404).send({
+        status: 'error',
+        message: "The category doesn't exist"
+      })
     }
 
     const groupedbyCategory = _.chain(result).groupBy('category_name');
 
     res.status(200).send({
       status: 'ok',
-      message: "Places listed by category_id",
+      message: `Places listed by category: ${result[0].category_name}`,
       data: groupedbyCategory,
     });
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(500).send({
+      status: 'error',
+      message: err.message
+    })
   } finally {
     if (connect) connect.release();
   }

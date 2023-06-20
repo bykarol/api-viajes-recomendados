@@ -25,7 +25,10 @@ const deletePlace = async (req, res) => {
       data: entry
     });
   } catch (err) {
-    res.send(err.message);
+    res.status(500).send({
+      status: 'error',
+      message: err.message
+    });
   } finally {
     if (connect) connect.release();
   }

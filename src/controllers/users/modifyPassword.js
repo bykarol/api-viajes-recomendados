@@ -16,7 +16,10 @@ const modifyPassword = async (req, res) => {
     );
     console.log(user.length)
     if (user.length === 0) {
-      return res.status(401).send('The old password is wrong');
+      return res.status(401).send({
+        status: 'error',
+        message: "The old password is wrong"
+      });
     }
 
     await connect.query(
@@ -37,7 +40,10 @@ const modifyPassword = async (req, res) => {
       }
     });
   } catch (err) {
-    res.status(400).send(err.message);
+    return res.status(400).send({
+      status: 'error',
+      message: err.message
+    });
   } finally {
     if (connect) connect.release();
   }

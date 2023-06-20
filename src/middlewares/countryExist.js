@@ -20,7 +20,10 @@ const countryExists = async (req, res, next) => {
     );
 
     if (place.length === 0) {
-      return res.status(404).send("The country is not found in the database.");
+      return res.status(404).send({
+        status: 'error',
+        message: "The country is not found in the database."
+      });
     }
 
     next();

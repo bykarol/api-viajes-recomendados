@@ -5,7 +5,7 @@ const postVotes = async (req, res) => {
 
   try {
     connect = await getDB();
-    const { place_id } = req.params;
+    const { id } = req.params;
     const userId = req.userInfo.id;
     const { vote, comment } = req.body;
 
@@ -17,18 +17,21 @@ const postVotes = async (req, res) => {
       FROM votes
       WHERE user_id = ? AND place_id = ?
     `,
-      [userId, place_id]
+      [userId, id]
     );
 
     if (existingVote.length > 0) {
-      return res.status(403).send('You have already voted this post');
+      return res.status(403).send({
+        status: 'error',
+        message: "You have already voted this post."
+      });
     }
 
     //introducimos voto con comentario
 
     await connect.query(
       `INSERT INTO votes (vote, comment, user_id, place_id) VALUES (?,?,?,?)`,
-      [vote, comment, req.userInfo.id, place_id]
+      [vote, comment, req.userInfo.id, id]
     );
 
     //media votos
@@ -39,16 +42,22 @@ const postVotes = async (req, res) => {
       LEFT JOIN votes  v ON p.id = v.place_id
       WHERE p.id = ?
     `,
-      [place_id]
+      [id]
     );
 
     res.status(200).send({
       status: 'ok',
       message: 'A successfully conducted vote',
-      data: { votes_average: average[0].votes_average },
+      data: {
+        place_id: id,
+        votes_average: average[0].votes_average
+      },
     });
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(500).send({
+      status: 'error',
+      message: err.message
+    })
   } finally {
     if (connect) connect.release();
   }

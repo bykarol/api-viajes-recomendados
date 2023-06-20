@@ -19,7 +19,10 @@ const listPlaces = async (req, res) => {
       data: listPlaces,
     });
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(500).send({
+      status: 'error',
+      message: err.message
+    })
   } finally {
     if (connect) connect.release();
   }

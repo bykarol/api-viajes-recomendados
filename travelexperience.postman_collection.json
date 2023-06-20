@@ -12,11 +12,11 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "localhost:3000/",
+          "raw": "localhost:4000/",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             ""
           ]
@@ -30,14 +30,14 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "localhost:3000/places/5",
+          "raw": "localhost:4000/places/3",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             "places",
-            "5"
+            "3"
           ]
         }
       },
@@ -49,11 +49,11 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "localhost:3000/places/listvotes",
+          "raw": "localhost:4000/places/listvotes",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             "places",
             "listvotes"
@@ -68,15 +68,15 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "localhost:3000/places/city/santo domingo",
+          "raw": "localhost:4000/places/city/madrid",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             "places",
             "city",
-            "santo domingo"
+            "madrid"
           ]
         }
       },
@@ -88,11 +88,11 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "localhost:3000/places/country/spain",
+          "raw": "localhost:4000/places/country/spain",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             "places",
             "country",
@@ -108,15 +108,15 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "localhost:3000/places/category/3",
+          "raw": "localhost:4000/places/category/2",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             "places",
             "category",
-            "3"
+            "2"
           ]
         }
       },
@@ -128,11 +128,11 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "localhost:3000/places/placesbycategories",
+          "raw": "localhost:4000/places/placesbycategories",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             "places",
             "placesbycategories"
@@ -143,15 +143,22 @@
     },
     {
       "name": "List all categories",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
       "request": {
         "method": "GET",
         "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
         "url": {
-          "raw": "localhost:3000/categorylist",
+          "raw": "localhost:4000/categorylist",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             "categorylist"
           ]
@@ -166,7 +173,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"email\":\"mkk@maria.com\",\r\n    \"password\":\"123456\",\r\n    \"name\": \"maika\"\r\n}",
+          "raw": "{\r\n    \"email\":\"mkkasa@maria.com\",\r\n    \"password\":\"123456\",\r\n    \"name\": \"Maria\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -174,11 +181,11 @@
           }
         },
         "url": {
-          "raw": "localhost:3000/users/newuser",
+          "raw": "localhost:4000/users/newuser",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             "users",
             "newuser"
@@ -194,7 +201,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"email\":\"mkk@maria.com\",\r\n    \"password\":\"123456\"\r\n}",
+          "raw": "{\r\n    \"email\":\"mkkasa@maria.com\",\r\n    \"password\":\"123456\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -202,11 +209,11 @@
           }
         },
         "url": {
-          "raw": "localhost:3000/users/login",
+          "raw": "localhost:4000/users/login",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             "users",
             "login"
@@ -222,7 +229,7 @@
         "header": [
           {
             "key": "authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsIm5hbWUiOiJtYWlrYSIsImF2YXRhciI6bnVsbCwiaWF0IjoxNjg2OTMzMDAzLCJleHAiOjE2ODY5MzY2MDN9.jcdAoc7etMQpu0UgFJkm4grgjgU8E2DSci64cW29Oek",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsIm5hbWUiOiJNYXJpYSIsImF2YXRhciI6bnVsbCwiaWF0IjoxNjg3MjYwMzczLCJleHAiOjE2ODcyNjM5NzN9.lnutd0qu9bJA_zSi5XJW7Kxn-iPsFUogXPU3o2-Q6k8",
             "type": "text"
           }
         ],
@@ -232,7 +239,7 @@
             {
               "key": "foto1",
               "type": "file",
-              "src": "/C:/Users/isabe/OneDrive/Escritorio/sapavietnamjpg.jpg"
+              "src": "/C:/Users/DELL/Downloads/api-logo.png"
             },
             {
               "key": "title",
@@ -253,15 +260,20 @@
               "key": "country",
               "value": "Vietnam",
               "type": "text"
+            },
+            {
+              "key": "categories",
+              "value": "1",
+              "type": "text"
             }
           ]
         },
         "url": {
-          "raw": "localhost:3000/places/newplace",
+          "raw": "localhost:4000/places/newplace",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             "places",
             "newplace"
@@ -277,7 +289,7 @@
         "header": [
           {
             "key": "authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsIm5hbWUiOiJtYWlrYSIsImF2YXRhciI6bnVsbCwiaWF0IjoxNjg2OTMxOTUzLCJleHAiOjE2ODY5MzU1NTN9.UlblK76qHzoJQXqHVy4gdUqWBsNfQiZXrUqLo3jB9Mc",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsIm5hbWUiOiJNYXJpYSIsImF2YXRhciI6bnVsbCwiaWF0IjoxNjg3MjYwMzczLCJleHAiOjE2ODcyNjM5NzN9.lnutd0qu9bJA_zSi5XJW7Kxn-iPsFUogXPU3o2-Q6k8",
             "type": "text"
           }
         ],
@@ -291,15 +303,15 @@
           }
         },
         "url": {
-          "raw": "localhost:3000/places/newvote/1",
+          "raw": "localhost:4000/places/newvote/2",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             "places",
             "newvote",
-            "1"
+            "2"
           ]
         }
       },
@@ -348,20 +360,20 @@
         "header": [
           {
             "key": "authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4Njg0ODY2OCwiZXhwIjoxNjg2ODUyMjY4fQ.I1WIIcd7hChznn5XNQlLQC4A54XX_0VOCGSzUn9tACI",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsIm5hbWUiOiJNYXJpYSIsImF2YXRhciI6bnVsbCwiaWF0IjoxNjg3MjYwMzczLCJleHAiOjE2ODcyNjM5NzN9.lnutd0qu9bJA_zSi5XJW7Kxn-iPsFUogXPU3o2-Q6k8",
             "type": "text"
           }
         ],
         "url": {
-          "raw": "localhost:3000/places/delete/1",
+          "raw": "localhost:4000/places/delete/5",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             "places",
             "delete",
-            "1"
+            "5"
           ]
         }
       },
@@ -374,13 +386,13 @@
         "header": [
           {
             "key": "authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nywicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY4NjkxNTQ1NiwiZXhwIjoxNjg2OTE5MDU2fQ.0eqB_pRiA2sF5oRbkUKgrn7MfNyi90EvFsclB3Spg8c",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6Im5vcm1hbCIsIm5hbWUiOiJNYXJpYSIsImF2YXRhciI6bnVsbCwiaWF0IjoxNjg3MjYwMzczLCJleHAiOjE2ODcyNjM5NzN9.lnutd0qu9bJA_zSi5XJW7Kxn-iPsFUogXPU3o2-Q6k8",
             "type": "text"
           }
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"oldPwd\":12346,\r\n    \"newPwd\":456789\r\n}",
+          "raw": "{\r\n    \"oldPwd\":123456,\r\n    \"newPwd\":456789\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -388,11 +400,11 @@
           }
         },
         "url": {
-          "raw": "localhost:3000/users/newpassword",
+          "raw": "localhost:4000/users/newpassword",
           "host": [
             "localhost"
           ],
-          "port": "3000",
+          "port": "4000",
           "path": [
             "users",
             "newpassword"

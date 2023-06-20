@@ -9,15 +9,24 @@ const postPlace = async (req, res) => {
       req.body;
 
     if (!title || !shortDescription || !city || !country) {
-      return res.status(400).send('Fill the required fields.');
+      return res.status(400).send({
+        status: 'error',
+        message: "Fill the required fields."
+      });
     }
 
     if (!req.files) {
-      return res.status(400).send('You must add at least one photo.');
+      return res.status(400).send({
+        status: 'error',
+        message: "You must add at least one photo."
+      });
     }
 
     if (!categories) {
-      return res.status(400).send('You must select at least one category.');
+      return res.status(400).send({
+        status: 'error',
+        message: "You must select at least one category."
+      });
     }
 
     const [result] = await connect.query(
@@ -88,7 +97,10 @@ const postPlace = async (req, res) => {
       }
     });
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(err.httpStatus).send({
+      status: 'error',
+      message: err.message
+    })
   } finally {
     if (connect) connect.release();
   }

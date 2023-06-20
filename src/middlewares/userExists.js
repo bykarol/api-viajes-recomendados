@@ -14,7 +14,10 @@ const userExists = async (req, res, next) => {
     );
 
     if (user.length === 0) {
-      return res.status(404).send('User not exists');
+      return res.status(404).send({
+        status: 'error',
+        message: "User doesn't exist"
+      });
     }
     next();
   } catch (error) {

@@ -14,7 +14,7 @@ const postUser = async (req, res) => {
     if (userExist.length > 0) {
       return res.status(409).send({
         status: 'error',
-        mensaje: 'user already exists',
+        mensaje: 'User already exists',
       });
     }
 
@@ -37,7 +37,10 @@ const postUser = async (req, res) => {
       data: user,
     });
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(500).send({
+      status: 'error',
+      message: err.message
+    })
   } finally {
     if (connect) connect.release();
   }

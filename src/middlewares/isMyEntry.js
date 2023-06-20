@@ -17,7 +17,10 @@ const isMyEntry = async (req, res, next) => {
     );
 
     if (req.userInfo.id !== entry.user_id && req.userInfo.role !== 'admin') {
-      res.status(401).send('You do not have permission');
+      return res.status(401).send({
+        status: 'error',
+        message: "You do not have permission"
+      });
     }
     next();
   } catch (error) {

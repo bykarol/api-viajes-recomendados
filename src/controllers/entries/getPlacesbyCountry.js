@@ -24,11 +24,14 @@ const getPlacesbyCountry = async (req, res) => {
 
     res.status(200).send({
       status: 'ok',
-      message: "List of places by country",
+      message: `List of places by country: ${country}`,
       data: groupedbyCountry,
     });
   } catch (err) {
-    res.send(err.message);
+    res.status(err.httpStatus).send({
+      status: 'error',
+      message: err.message
+    })
   } finally {
     if (connect) connect.release();
   }

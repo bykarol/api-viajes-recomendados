@@ -21,7 +21,10 @@ const loginUser = async (req, res) => {
     );
 
     if (user.length === 0) {
-      return res.status(401).send('Incorrect email or password');
+      return res.status(401).send({
+        status: 'error',
+        message: "Incorrect email or password."
+      });
     }
 
     const info = {
@@ -42,7 +45,10 @@ const loginUser = async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(400).send(err);
+    return res.status(400).send({
+      status: 'error',
+      message: err.message
+    });
   } finally {
     if (connect) connect.release();
   }

@@ -9,12 +9,18 @@ const isUser = async (req, res, next) => {
 
     const authorization = req.headers['authorization'];
 
-    if (!authorization) return res.status(401).send('Not authorized');
+    if (!authorization) return res.status(401).send({
+      status: 'error',
+      message: "Not authorized."
+    });
 
     try {
       tokenInfo = jwt.verify(authorization, process.env.SECRET_TOKEN);
     } catch (error) {
-      res.status(401).send('Token not valid');
+      return res.status(401).send({
+        status: 'error',
+        message: "Token not valid"
+      });
     }
 
     const [user] = await connect.query(
@@ -30,13 +36,19 @@ const isUser = async (req, res, next) => {
     const timestampCreateToken = new Date(tokenInfo.iat * 1000);
 
     if (timestampCreateToken < lastAuthUpdate) {
-      res.status(401).send('Token expired');
+      return res.status(401).send({
+        status: 'error',
+        message: "Token expired"
+      });
     }
 
     req.userInfo = tokenInfo;
     next();
   } catch (error) {
-    console.log(error);
+    return res.status(500).send({
+      status: 'error',
+      message: error.message
+    });
   } finally {
     if (connect) connect.release();
   }
