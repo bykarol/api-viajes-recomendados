@@ -5,7 +5,7 @@ const getVotes = async (req, res) => {
   try {
     connect = await getDB();
     const [votesPlaces] = await connect.query(
-      `SELECT sum(v.vote)/count(v.vote) as votes_average, p.title, p.shortDescription, p.country, p.date, p.id as "place_id"
+      `SELECT v.id, sum(v.vote)/count(v.vote) as votes_average, p.title, p.shortDescription, p.country, p.date, p.id as "place_id, v.user_id"
       FROM places p
       LEFT JOIN votes v ON p.id = v.place_id
       GROUP BY p.id ORDER BY votes_average DESC;`
