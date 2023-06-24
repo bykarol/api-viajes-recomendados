@@ -4,16 +4,16 @@ const getUser = async (req, res) => {
   let connect;
   try {
     connect = await getDB();
-    const { id } = req.params;
+
     const [user] = await connect.query(
-      `SELECT id, email, name, date FROM users 
+      `SELECT id, email, name, avatar, date FROM users 
         WHERE id=?;`,
-      [id]
+      [req.userInfo.id]
     );
 
     res.status(200).send({
       status: 'ok',
-      message: 'Data of user by id',
+      message: 'Registered user data',
       data: user,
     });
   } catch (err) {

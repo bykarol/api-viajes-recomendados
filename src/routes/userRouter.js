@@ -14,7 +14,6 @@ const {
 //middlewares
 const { validateBody, validateParams } = require('../middlewares/isValid');
 const isUser = require('../middlewares/isUser');
-const userExists = require('../middlewares/userExists');
 
 //users endpoints
 router.post('/users/login', loginUser);
@@ -28,6 +27,6 @@ router.patch(
   updateUser
 );
 router.get('/users/validate/:regCode', validateParams, validateUser);
-router.get('/users/user/:id', userExists, getUser);
+router.get('/users/user', isUser, getUser);
 
 module.exports = router;
