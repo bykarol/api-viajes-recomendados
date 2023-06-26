@@ -6,15 +6,19 @@ const postUser = async (req, res) => {
     const { email, password, name } = req.body;
     connect = await getDB();
 
-    const [userExist] = await connect.query(
-      `SELECT id, date FROM users WHERE email=?`,
+    const [userExists] = await connect.query(
+      `
+            SELECT id
+            FROM users
+            WHERE email = ?
+            `,
       [email]
     );
 
-    if (userExist.length > 0) {
+    if (userExists.length > 0) {
       return res.status(409).send({
         status: 'error',
-        mensaje: 'User already exists',
+        message: 'User already exists',
       });
     }
 

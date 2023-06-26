@@ -4,7 +4,7 @@ const registrationSchema = Joi.object({
   email: Joi.string()
     .required()
     .email()
-    .max(50)
+    .max(100)
     .error(new Error('Email not specified or invalid')),
   password: Joi.string()
     .required()
@@ -13,7 +13,7 @@ const registrationSchema = Joi.object({
     .error(new Error('Password not specified or invalid')),
   name: Joi.string()
     .min(1)
-    .max(8)
+    .max(100)
     .error(new Error('Name not specified or invalid'))
 });
 

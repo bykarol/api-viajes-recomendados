@@ -33,7 +33,7 @@ async function createDB() {
         lastAuthUpdate DATETIME,
         recoverCode CHAR(36),
         date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-        `
+        );`
     );
     await connect.query(
       `
