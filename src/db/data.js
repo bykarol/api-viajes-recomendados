@@ -3,10 +3,10 @@ function Category(name) {
 }
 
 const categories = [
-  new Category("Naturaleza"),
   new Category("Aventura"),
   new Category("Cultura"),
   new Category("Deportes"),
+  new Category("Naturaleza"),
   new Category("Relajación"),
   new Category("Romántico")
 ];
