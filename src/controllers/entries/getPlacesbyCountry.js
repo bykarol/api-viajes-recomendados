@@ -19,7 +19,7 @@ const getPlacesbyCountry = async (req, res) => {
       SELECT places.*, photos.photo
       FROM places
       LEFT JOIN photos ON places.id = photos.place_id
-      WHERE places.city=?
+      WHERE places.country=?
       `,
       [country]
     );
