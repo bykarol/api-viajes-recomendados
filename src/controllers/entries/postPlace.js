@@ -5,7 +5,7 @@ const postPlace = async (req, res) => {
   let connect;
   try {
     connect = await getDB();
-    const { title, shortDescription, largeDescription, city, country, categories, photos } =
+    const { title, shortDescription, largeDescription, city, country, categories } =
       req.body;
 
     if (!title || !shortDescription || !city || !country) {
@@ -15,7 +15,7 @@ const postPlace = async (req, res) => {
       });
     }
 
-    if (!photos) {
+    if (!req.files) {
       return res.status(400).send({
         status: 'error',
         message: "You must add at least one photo."
@@ -46,8 +46,9 @@ const postPlace = async (req, res) => {
     const { insertId } = result;
 
     //adding photos
-    if (photos && Object.keys(photos).length > 0) {
-      for (let photosData of Object.values(photos).slice(0, 3)) {
+    if (req.files && Object.keys(req.files).length > 0) {
+      console.log(Object.values(req.files))
+      for (let photosData of Object.values(req.files).slice(0, 3)) {
         const photoName = await savePhoto(photosData);
         await connect.query(
           `
