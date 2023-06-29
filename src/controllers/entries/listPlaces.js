@@ -5,8 +5,9 @@ const listPlaces = async (req, res) => {
   try {
     connect = await getDB();
     const [listPlaces] = await connect.query(
-      `SELECT p.date, p.title, p.shortDescription, p.city, p.country, sum(v.vote)/count(v.vote) as votes_average, p.id as "place_id"
+      `SELECT p.date, p.title, p.shortDescription, p.city, p.country, sum(v.vote)/count(v.vote) as votes_average, p.id as "place_id", ph.photo
       FROM places p
+      INNER JOIN photos ph ON p.id = ph.place_id
       LEFT JOIN votes v ON p.id=v.place_id
       GROUP BY p.id
       ORDER BY p.date DESC;`
