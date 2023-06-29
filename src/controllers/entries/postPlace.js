@@ -46,18 +46,27 @@ const postPlace = async (req, res) => {
     const { insertId } = result;
 
     //adding photos
-    if (req.files && Object.keys(req.files).length > 0) {
-      console.log(Object.values(req.files))
-      for (let photosData of Object.values(req.files).slice(0, 3)) {
-        const photoName = await savePhoto(photosData);
-        await connect.query(
-          `
-            INSERT INTO photos(photo, place_id) VALUES (?, ?)
-            `,
-          [photoName, insertId]
-        );
-      }
+    if (req.files.photos) {
+      const photoName = await savePhoto(req.files.photos)
+      await connect.query(
+        `
+        INSERT INTO photos(photo, place_id) VALUES (?, ?)
+        `,
+        [photoName, insertId]
+      );
     }
+    // if (req.files && Object.keys(req.files).length > 0) {
+    //   console.log(Object.values(req.files))
+    //   for (let photosData of Object.values(req.files).slice(0, 3)) {
+    //     const photoName = await savePhoto(photosData);
+    //     await connect.query(
+    //       `
+    //         INSERT INTO photos(photo, place_id) VALUES (?, ?)
+    //         `,
+    //       [photoName, insertId]
+    //     );
+    //   }
+    // }
 
     //adding categories
     for (let category of categories) {
