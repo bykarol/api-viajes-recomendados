@@ -36,6 +36,10 @@ const updateUser = async (req, res, next) => {
         `,
         [nameImgAvatar, id]
       );
+      res.send({
+        status: 'ok',
+        message: 'User data updated.',
+      });
     }
 
     if (email && email != currentUser[0].email) {
@@ -73,7 +77,7 @@ const updateUser = async (req, res, next) => {
         message:
           'User data updated. Check your email to validate the new address.',
       });
-    } else {
+    } else if(name && name != currentUser[0].email) {
       await connect.query(
         `
           UPDATE users
