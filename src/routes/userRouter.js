@@ -9,6 +9,7 @@ const {
   updateUser,
   validateUser,
   getUser,
+  getUsers
 } = require('../controllers/users');
 
 //middlewares
@@ -28,5 +29,5 @@ router.patch(
 );
 router.get('/users/validate/:regCode', validateParams, validateUser);
 router.get('/users/user', isUser, getUser);
-
+router.get('/users/usersinfo', getUsers);
 module.exports = router;
