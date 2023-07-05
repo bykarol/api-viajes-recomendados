@@ -6,7 +6,8 @@ const getPlacesByCategory = async (req, res) => {
   try {
     connect = await getDB();
     const [result] = await connect.query(
-      `SELECT c.id as category_id, c.name as category_name, sum(v.vote)/count(v.vote) as votes_average, p.*, photos.photo, v.id,count(v.comment) as comments_qty,sum(v.vote)/count(v.vote) as votes_average
+      `SELECT c.id as category_id, c.name as category_name, sum(v.vote)/count(v.vote) as votes_average, p.*, photos.photo,
+       v.id, count(v.comment) as comments_qty, count(v.vote) as votes_qty, sum(v.vote)/count(v.vote) as votes_average
       FROM categories c
       INNER JOIN place_category pc ON c.id = pc.category_id
       INNER JOIN places p ON p.id = pc.place_id
