@@ -19,18 +19,19 @@ async function createDB() {
     await connect.query(`USE travelexperience`);
     await connect.query(
       `
-      id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-      email VARCHAR(100) UNIQUE NOT NULL,
-      password VARCHAR(512) NOT NULL,
-      name VARCHAR(100),
-      avatar VARCHAR(100) DEFAULT 'avatarDefault.png',
-      active TINYINT DEFAULT 1,
-      role ENUM('admin', 'normal') DEFAULT 'normal' NOT NULL,
-      regCode CHAR(36),
-      deleted TINYINT DEFAULT 0,
-      lastAuthUpdate DATETIME,
-      recoverCode CHAR(36),
-      date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);`
+      CREATE TABLE users (
+        id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+        email VARCHAR(100) UNIQUE NOT NULL,
+        password VARCHAR(512) NOT NULL,
+        name VARCHAR(100),
+        avatar VARCHAR(100) DEFAULT 'avatarDefault.png',
+        active TINYINT DEFAULT 1,
+        role ENUM('admin', 'normal') DEFAULT 'normal' NOT NULL,
+        regCode CHAR(36),
+        deleted TINYINT DEFAULT 0,
+        lastAuthUpdate DATETIME,
+        recoverCode CHAR(36),
+        date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);`
     );
     await connect.query(
       `
