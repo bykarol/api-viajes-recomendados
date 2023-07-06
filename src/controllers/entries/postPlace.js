@@ -107,7 +107,7 @@ const postPlace = async (req, res) => {
       }
     });
   } catch (err) {
-    res.status(err.httpStatus).send({
+    res.status(500).send({
       status: 'error',
       message: err.message
     })
