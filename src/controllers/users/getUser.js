@@ -13,7 +13,7 @@ const getUser = async (req, res) => {
 
     res.status(200).send({
       status: 'ok',
-      message: 'Registered user data',
+      message: 'Datos de usuario registrado',
       data: user,
     });
   } catch (err) {

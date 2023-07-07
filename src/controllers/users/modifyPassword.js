@@ -14,11 +14,11 @@ const modifyPassword = async (req, res) => {
               `,
       [req.userInfo.id, oldPwd]
     );
-    console.log(user.length)
+    console.log(user.length);
     if (user.length === 0) {
       return res.status(401).send({
         status: 'error',
-        message: "The old password is wrong"
+        message: 'La contraseña anterior es incorrecta',
       });
     }
 
@@ -33,16 +33,16 @@ const modifyPassword = async (req, res) => {
 
     res.send({
       status: 'ok',
-      message: 'password changed successfully',
+      message: 'Contraseña cambiada correctamente',
       data: {
         id: req.userInfo.id,
-        name: req.userInfo.name
-      }
+        name: req.userInfo.name,
+      },
     });
   } catch (err) {
     return res.status(400).send({
       status: 'error',
-      message: err.message
+      message: err.message,
     });
   } finally {
     if (connect) connect.release();

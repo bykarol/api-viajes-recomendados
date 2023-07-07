@@ -5,27 +5,33 @@ const postPlace = async (req, res) => {
   let connect;
   try {
     connect = await getDB();
-    const { title, shortDescription, largeDescription, city, country, categories } =
-      req.body;
+    const {
+      title,
+      shortDescription,
+      largeDescription,
+      city,
+      country,
+      categories,
+    } = req.body;
 
     if (!title || !shortDescription || !city || !country) {
       return res.status(400).send({
         status: 'error',
-        message: "Fill the required fields."
+        message: 'Rellena los campos requeridos.',
       });
     }
 
     if (!req.files) {
       return res.status(400).send({
         status: 'error',
-        message: "You must add at least one photo."
+        message: 'Debes añadir al menos una foto.',
       });
     }
 
     if (!categories) {
       return res.status(400).send({
         status: 'error',
-        message: "You must select at least one category."
+        message: 'Debes seleccionar al menos una categoría.',
       });
     }
 
@@ -47,7 +53,7 @@ const postPlace = async (req, res) => {
 
     //adding photos
     if (req.files.photos) {
-      const photoName = await savePhoto(req.files.photos)
+      const photoName = await savePhoto(req.files.photos);
       await connect.query(
         `
         INSERT INTO photos(photo, place_id) VALUES (?, ?)
@@ -95,22 +101,22 @@ const postPlace = async (req, res) => {
             `,
         [category_id]
       );
-      categoriesNames.push(category_name[0])
+      categoriesNames.push(category_name[0]);
     }
 
     res.status(200).send({
       status: 'ok',
-      message: 'Place posted successfully.',
+      message: 'Lugar subido correctamente.',
       data: {
         entry,
-        categoriesNames
-      }
+        categoriesNames,
+      },
     });
   } catch (err) {
     res.status(500).send({
       status: 'error',
-      message: err.message
-    })
+      message: err.message,
+    });
   } finally {
     if (connect) connect.release();
   }

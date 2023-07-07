@@ -1,5 +1,5 @@
 const getDB = require('../../db/db');
-const  generateErr  = require('../../service/generateErr');
+const generateErr = require('../../service/generateErr');
 
 const validateUser = async (req, res, next) => {
   let connection;
@@ -32,7 +32,7 @@ const validateUser = async (req, res, next) => {
 
     res.status(200).send({
       status: 'ok',
-      message: 'User validate',
+      message: 'Usuario validado',
     });
   } catch (err) {
     next(err.message);

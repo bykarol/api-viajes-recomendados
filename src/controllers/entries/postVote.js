@@ -23,7 +23,7 @@ const postVotes = async (req, res) => {
     if (existingVote.length > 0) {
       return res.status(403).send({
         status: 'error',
-        message: "You have already voted this post."
+        message: 'Ya has votado este post.',
       });
     }
 
@@ -47,17 +47,17 @@ const postVotes = async (req, res) => {
 
     res.status(200).send({
       status: 'ok',
-      message: 'A successfully conducted vote',
+      message: 'Voto añadido correctamente',
       data: {
         place_id: id,
-        votes_average: average[0].votes_average
+        votes_average: average[0].votes_average,
       },
     });
   } catch (err) {
     res.status(500).send({
       status: 'error',
-      message: err.message
-    })
+      message: err.message,
+    });
   } finally {
     if (connect) connect.release();
   }

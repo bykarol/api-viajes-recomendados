@@ -36,7 +36,7 @@ const getPlacesByID = async (req, res) => {
 
     res.status(200).send({
       status: 'ok',
-      message: `Detail of place_id: ${id}`,
+      message: `Detalle de lugar con id: ${id}`,
       data: {
         generalInfo,
         photos,
@@ -47,8 +47,8 @@ const getPlacesByID = async (req, res) => {
   } catch (err) {
     res.status(500).send({
       status: 'error',
-      message: err.message
-    })
+      message: err.message,
+    });
   } finally {
     if (connect) connect.release();
   }

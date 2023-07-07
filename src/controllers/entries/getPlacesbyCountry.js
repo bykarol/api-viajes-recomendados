@@ -9,7 +9,7 @@ const getPlacesbyCountry = async (req, res) => {
     const { country } = req.params;
 
     if (!country) {
-      const error = new Error('Nothing found with these parameters');
+      const error = new Error('No encontramos nada con estos parámetros');
       error.httpStatus = 404;
       throw error;
     }
@@ -25,7 +25,7 @@ const getPlacesbyCountry = async (req, res) => {
     );
 
     const experiencesWithPhotos = {};
-    
+
     for (const experience of experiences) {
       const placeId = experience.id;
 
@@ -39,7 +39,7 @@ const getPlacesbyCountry = async (req, res) => {
           city: experience.city,
           country: experience.country,
           user_id: experience.user_id,
-          photos: []
+          photos: [],
         };
       }
 
@@ -53,14 +53,14 @@ const getPlacesbyCountry = async (req, res) => {
 
     res.status(200).send({
       status: 'ok',
-      message: `List of places by country: ${country}`,
+      message: `Lista de lugares por país: ${country}`,
       data: response,
     });
   } catch (err) {
     res.status(err.httpStatus).send({
       status: 'error',
-      message: err.message
-    })
+      message: err.message,
+    });
   } finally {
     if (connect) connect.release();
   }

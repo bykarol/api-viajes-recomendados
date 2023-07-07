@@ -38,7 +38,7 @@ const updateUser = async (req, res, next) => {
       );
       res.send({
         status: 'ok',
-        message: 'User data updated.',
+        message: 'Datos del usuario actualizados correctamente.',
       });
     }
 
@@ -77,7 +77,7 @@ const updateUser = async (req, res, next) => {
         message:
           'User data updated. Check your email to validate the new address.',
       });
-    } else if(name && name != currentUser[0].email) {
+    } else if (name && name != currentUser[0].email) {
       await connect.query(
         `
           UPDATE users
@@ -89,7 +89,7 @@ const updateUser = async (req, res, next) => {
 
       res.send({
         status: 'ok',
-        message: 'User data updated.',
+        message: 'Datos del usuario actualizados correctamente.',
       });
     }
   } catch (err) {
