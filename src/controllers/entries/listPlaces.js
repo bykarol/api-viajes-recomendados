@@ -12,7 +12,6 @@ const listPlaces = async (req, res) => {
       GROUP BY p.id
       ORDER BY p.date DESC;`
     );
-    console.log(listPlaces.votes_qty);
     res.status(200).send({
       status: 'ok',
       message: 'List of places ordered by date',

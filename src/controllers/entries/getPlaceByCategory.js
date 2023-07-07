@@ -5,6 +5,20 @@ const getPlacesByCategory = async (req, res) => {
   const id = req.params.id;
   try {
     connect = await getDB();
+
+    const [categoryExists] = await connect.query(
+      `SELECT id FROM categories
+      WHERE id = ?`,
+      [id]
+    );
+
+    if (categoryExists.length === 0) {
+      return res.status(404).send({
+        status: 'error',
+        message: "La categoría no existe",
+      });
+    }
+
     const [result] = await connect.query(
       `SELECT c.id as category_id, c.name as category_name, sum(v.vote)/count(v.vote) as votes_average, p.*, photos.photo,
        v.id, count(v.comment) as comments_qty, count(v.vote) as votes_qty, sum(v.vote)/count(v.vote) as votes_average
@@ -17,10 +31,10 @@ const getPlacesByCategory = async (req, res) => {
       [id]
     );
 
-    if (result.length === 0) {
-      return res.status(404).send({
-        status: 'error',
-        message: "The category doesn't exist",
+    if (result[0].category_id === null) {
+      return res.status(200).send({
+        status: 'ok',
+        message: "No existen lugares en esta categoría.",
       });
     }
 
