@@ -17,13 +17,13 @@ const getPlacesByCategories = async (req, res) => {
 
     res.status(200).send({
       status: 'ok',
-      message: 'List of places grouped by categories',
+      message: 'Lista de lugares agrupados por categories',
       data: groupedbyCategory,
     });
   } catch (err) {
     res.status(500).send({
       status: 'error',
-      message: err.message
+      message: err.message,
     });
   } finally {
     if (connect) connect.release();

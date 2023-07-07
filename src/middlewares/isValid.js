@@ -5,16 +5,16 @@ const registrationSchema = Joi.object({
     .required()
     .email()
     .max(100)
-    .error(new Error('Email not specified or invalid')),
+    .error(new Error('Email no especificado o inválido')),
   password: Joi.string()
     .required()
     .min(6)
     .max(12)
-    .error(new Error('Password not specified or invalid')),
+    .error(new Error('Password no especificado o inválido')),
   name: Joi.string()
     .min(1)
     .max(100)
-    .error(new Error('Name not specified or invalid'))
+    .error(new Error('Nombre no especificado o inválido')),
 });
 
 const pwdSchema = Joi.object({
@@ -22,19 +22,19 @@ const pwdSchema = Joi.object({
     .required()
     .min(6)
     .max(12)
-    .error(new Error('Password not specified or invalid'))
+    .error(new Error('Password no especificado o inválido')),
 });
 
 const userUpdateSchema = Joi.object({
   name: Joi.string()
     .min(1)
     .max(50)
-    .error(new Error('Name not specified or invalid')),
+    .error(new Error('Nombre no especificado o inválido')),
   email: Joi.string()
     .required()
     .email()
     .max(50)
-    .error(new Error('Email not specified or invalid'))
+    .error(new Error('Email no especificado o inválido')),
 });
 //params
 const idSchema = Joi.object({
@@ -42,14 +42,14 @@ const idSchema = Joi.object({
     .integer()
     .positive()
     .required()
-    .error(new Error('ID not specified or invalid'))
+    .error(new Error('ID no especificado o inválido')),
 });
 
 const regCodeSchema = Joi.object({
   regCode: Joi.string()
     .guid({ version: 'uuidv4' })
     .required()
-    .error(new Error('Registration Code not specified or invalid')),
+    .error(new Error('Registration Code no especificado o inválido')),
 });
 
 const citySchema = Joi.object({
@@ -58,7 +58,7 @@ const citySchema = Joi.object({
     .min(1)
     .max(50)
     .pattern(/^[^0-9]*$/)
-    .error(new Error('City not specified or invalid'))
+    .error(new Error('Ciudad no especificada o inválida')),
 });
 const countrySchema = Joi.object({
   country: Joi.string()
@@ -66,7 +66,7 @@ const countrySchema = Joi.object({
     .min(1)
     .max(50)
     .pattern(/^[^0-9]*$/)
-    .error(new Error('Country not specified or invalid'))
+    .error(new Error('País no especificado o inválido')),
 });
 
 const validateBody = (req, res, next) => {
@@ -75,7 +75,7 @@ const validateBody = (req, res, next) => {
     if (error) {
       return res.status(400).json({
         status: 'error',
-        message: error.message
+        message: error.message,
       });
     }
   } else if (req.body.name && req.body.email) {
@@ -83,7 +83,7 @@ const validateBody = (req, res, next) => {
     if (error) {
       return res.status(400).json({
         status: 'error',
-        message: error.message
+        message: error.message,
       });
     }
   } else if (req.body.password) {
@@ -91,7 +91,7 @@ const validateBody = (req, res, next) => {
     if (error) {
       return res.status(400).json({
         status: 'error',
-        message: error.message
+        message: error.message,
       });
     }
   }
@@ -104,7 +104,7 @@ const validateParams = (req, res, next) => {
     if (error) {
       return res.status(400).json({
         status: 'error',
-        message: error.message
+        message: error.message,
       });
     }
   } else if (req.params.regCode) {
@@ -112,7 +112,7 @@ const validateParams = (req, res, next) => {
     if (error) {
       return res.status(400).json({
         status: 'error',
-        message: error.message
+        message: error.message,
       });
     }
   } else if (req.params.city) {
@@ -120,7 +120,7 @@ const validateParams = (req, res, next) => {
     if (error) {
       return res.status(400).json({
         status: 'error',
-        message: error.message
+        message: error.message,
       });
     }
   } else if (req.params.country) {
@@ -128,7 +128,7 @@ const validateParams = (req, res, next) => {
     if (error) {
       return res.status(400).json({
         status: 'error',
-        message: error.message
+        message: error.message,
       });
     }
   }

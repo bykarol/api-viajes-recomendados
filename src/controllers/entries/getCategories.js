@@ -12,13 +12,13 @@ const getCategories = async (req, res) => {
 
     res.status(200).send({
       status: 'ok',
-      message: "List of categories ordered by ID",
+      message: 'Lista de categoríass ordenadas por ID',
       data: result,
     });
   } catch (err) {
     res.status(500).send({
       status: 'error',
-      message: err.message
+      message: err.message,
     });
   } finally {
     if (connect) connect.release();

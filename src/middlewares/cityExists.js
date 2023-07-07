@@ -9,7 +9,6 @@ const cityExists = async (req, res, next) => {
     const { city } = req.params;
     const lowercaseCity = city.toLowerCase();
 
-
     const [place] = await connection.query(
       `
           SELECT id
@@ -22,7 +21,7 @@ const cityExists = async (req, res, next) => {
     if (place.length === 0) {
       return res.status(404).send({
         status: 'error',
-        message: "The city is not found in the database."
+        message: 'La ciudad no fue encontrada en la base de datos.',
       });
     }
 

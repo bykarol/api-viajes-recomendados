@@ -23,7 +23,7 @@ const loginUser = async (req, res) => {
     if (user.length === 0) {
       return res.status(401).send({
         status: 'error',
-        message: "Incorrect email or password."
+        message: 'Email o contraseña incorrectos.',
       });
     }
 
@@ -31,7 +31,7 @@ const loginUser = async (req, res) => {
       id: user[0].id,
       role: user[0].role,
       name: user[0].name,
-      avatar: user[0].avatar
+      avatar: user[0].avatar,
     };
 
     const token = jwt.sign(info, process.env.SECRET_TOKEN, { expiresIn: '1h' });
@@ -41,13 +41,13 @@ const loginUser = async (req, res) => {
       message: 'Login',
       token: token,
       data: {
-        info
+        info,
       },
     });
   } catch (err) {
     return res.status(400).send({
       status: 'error',
-      message: err.message
+      message: err.message,
     });
   } finally {
     if (connect) connect.release();

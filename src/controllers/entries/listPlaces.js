@@ -14,7 +14,7 @@ const listPlaces = async (req, res) => {
     );
     res.status(200).send({
       status: 'ok',
-      message: 'List of places ordered by date',
+      message: 'Lista de lugares ordenados por fecha',
       length: listPlaces.length,
       data: listPlaces,
     });

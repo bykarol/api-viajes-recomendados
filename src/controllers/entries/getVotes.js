@@ -14,14 +14,14 @@ const getVotes = async (req, res) => {
 
     res.status(200).send({
       status: 'ok',
-      message: 'List of places ordered by most voted',
+      message: 'Lista de lugares ordenados por los más votados',
       data: votesPlaces,
     });
   } catch (err) {
     res.status(500).send({
       status: 'error',
-      message: err.message
-    })
+      message: err.message,
+    });
   } finally {
     if (connect) connect.release();
   }

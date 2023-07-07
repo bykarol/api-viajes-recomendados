@@ -15,7 +15,7 @@ const getPlacesByCategory = async (req, res) => {
     if (categoryExists.length === 0) {
       return res.status(404).send({
         status: 'error',
-        message: "La categoría no existe",
+        message: 'La categoría no existe',
       });
     }
 
@@ -34,13 +34,13 @@ const getPlacesByCategory = async (req, res) => {
     if (result[0].category_id === null) {
       return res.status(200).send({
         status: 'ok',
-        message: "No existen lugares en esta categoría.",
+        message: 'No existen lugares en esta categoría.',
       });
     }
 
     res.status(200).send({
       status: 'ok',
-      message: `Places listed by category: ${result[0].category_name}`,
+      message: `Lugares ordenados por categoría: ${result[0].category_name}`,
       data: result,
     });
   } catch (err) {

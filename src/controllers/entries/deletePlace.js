@@ -21,13 +21,13 @@ const deletePlace = async (req, res) => {
 
     res.send({
       status: 'ok',
-      message: `The entry with id ${id} was successfully deleted`,
-      data: entry
+      message: `El post con id ${id} fue eliminado correctamente`,
+      data: entry,
     });
   } catch (err) {
     res.status(500).send({
       status: 'error',
-      message: err.message
+      message: err.message,
     });
   } finally {
     if (connect) connect.release();

@@ -9,17 +9,18 @@ const isUser = async (req, res, next) => {
 
     const authorization = req.headers['authorization'];
 
-    if (!authorization) return res.status(401).send({
-      status: 'error',
-      message: "Not authorized."
-    });
+    if (!authorization)
+      return res.status(401).send({
+        status: 'error',
+        message: 'No autorizado.',
+      });
 
     try {
       tokenInfo = jwt.verify(authorization, process.env.SECRET_TOKEN);
     } catch (error) {
       return res.status(401).send({
         status: 'error',
-        message: "Token not valid"
+        message: 'Token no válido',
       });
     }
 
@@ -38,7 +39,7 @@ const isUser = async (req, res, next) => {
     if (timestampCreateToken < lastAuthUpdate) {
       return res.status(401).send({
         status: 'error',
-        message: "Token expired"
+        message: 'Token caducado',
       });
     }
 
@@ -47,7 +48,7 @@ const isUser = async (req, res, next) => {
   } catch (error) {
     return res.status(500).send({
       status: 'error',
-      message: error.message
+      message: error.message,
     });
   } finally {
     if (connect) connect.release();
