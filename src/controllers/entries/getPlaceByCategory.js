@@ -20,14 +20,16 @@ const getPlacesByCategory = async (req, res) => {
     }
 
     const [result] = await connect.query(
-      `SELECT c.id as category_id, c.name as category_name, sum(v.vote)/count(v.vote) as votes_average, p.*, photos.photo,
-       v.id, count(v.comment) as comments_qty, count(v.vote) as votes_qty, sum(v.vote)/count(v.vote) as votes_average
-      FROM categories c
+      ` SELECT c.id as category_id, c.name as category_name,  p.id, p.title,p.shortDescription, p.largeDescription,
+      p.date, p.city,p.country, p.user_id, photos.photo, v.id as vote_id, sum(v.vote)/count(v.vote) as votes_average,
+      count(v.comment) as comments_qty, count(v.vote) as votes_qty, sum(v.vote)/count(v.vote) as votes_average
+       FROM categories c
       INNER JOIN place_category pc ON c.id = pc.category_id
       INNER JOIN places p ON p.id = pc.place_id
-      LEFT JOIN votes v ON p.id = v.place_id
-      LEFT JOIN photos ON p.id = photos.place_id
-      WHERE c.id = ?`,
+      INNER JOIN photos ON p.id = photos.place_id
+      INNER JOIN votes v ON v.place_id=p.id
+      WHERE c.id = ?
+      GROUP BY p.id;`,
       [id]
     );
 
