@@ -26,7 +26,7 @@ const getPlacesByID = async (req, res) => {
     );
 
     const [categories] = await connect.query(
-      `SELECT c.name
+      `SELECT c.name, c.id
       FROM places p
       LEFT JOIN place_category pc ON p.id = pc.place_id
       LEFT JOIN categories c ON pc.category_id = c.id
